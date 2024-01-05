@@ -3,7 +3,7 @@ Ostseeschule Flensburg,Klosterholzweg,30,24944,Flensburg,0461/80724796,https://w
 Freie Waldorfschule Flensburg,Valentiner Allee,1,24941,Flensburg,0461/903250,https://www.waldorfschule-flensburg.de,,,,,,,1,1,1,1-13,,,,,,,,
 Paulus-Paulsen-Schule,Schulze-Delitzsch-Straße,2,24943,Flensburg,0461/852543,http://pps.lernnetz.de,,,,1,,,,,,,,,,,,,,
 Max von der Grün-Schule,Elbestraße,10,24943,Flensburg,0461/852068,https://mvdg.lernnetz.de,,,,1,,,,,,,,,,,,,,
-Zentrum für kooperative Erziehungshilfe,Waitzstraße,16,24937,Flensburg,0461/852915,www.zke.flensburg.de,,,,1,,,,,,,,,,,,,,
+Zentrum für kooperative Erziehungshilfe,Waitzstraße,16,24937,Flensburg,0461/852915,,,,,1,,,,,,,,,,,,,,
 Altes Gymnasium,Selckstraße,12,24937,Flensburg,0461/852902,https://altesgymnasium-flensburg.de,,,1,,1,,,,1,5-13,,-,,,,,,
 Auguste-Viktoria-Schule Flensburg,Südergraben,34,24937,Flensburg,0461/852048,https://www.auguste-viktoria-schule.de,,,1,,1,,,,1,5-13,,,,,,,,
 Fördegymnasium,Elbestraße,10,24943,Flensburg,0461/852599,https://foerdegymnasium.de,,,1,,,,,,1,5-13,,,,,,Stadt Flensburg,,
@@ -14,7 +14,7 @@ Comenius-Schule,Drosselweg,12,24939,Flensburg,0461/852582,https://comenius.flens
 Gemeinschaftsschule Flensburg-West,Friesische Lücke,7,24937,Flensburg,0461/852538,https://flensburg-west.de,,,1,,1,,,,1,,,,,,,,,
 Käte-Lassen-Schule,Mommsenstraße,45,24943,Flensburg,0461/852540,https://www.kaete-lassen-schule.de,,,1,,1,,,,1,,,,,,,,,
 Falkenbergschule,Emil-Nolde-Straße,31,24937,Flensburg,0461/852548,www.falkenbergschule-flensburg.de,1,,,,,,,,,1-4,,,,,,,,
-Hohlwegschule,Glücksburger Straße,38,24943,Flensburg,0461/852587,www.hohlwegschule.de,1,,,,,,,,,1-4,,,,,,,,
+Hohlwegschule,Glücksburger Straße,38,24943,Flensburg,0461/852587,http://www.hohlwegschule.de,1,,,,,,,,,1-4,,,,,,,,
 Schule Adelby,Ringstraße,1,24943,Flensburg,0461/852598,https://schule-adelby.flensburg.de,1,,,,,,,,,1-4,,,,,,,,
 Schule Auf der Rude,Lundweg,30,24941,Flensburg,0461/852556,https://rudeschule.flensburg.de,1,,,,,,,,,1-4,,,,,,,,
 Schule Engelsby,Brahmsstraße,2-4,24943,Flensburg,0461/852597,https://schule-engelsby.lernnetz.de,1,,,,,,,,,1-4,,,,,,,,
@@ -23,9 +23,9 @@ Schule Fruerlund,Bohlberg,56-58,24943,Flensburg,0461/852554,https://www.schule-f
 Schule Ramsharde,Am Katharinenhof,29,24939,Flensburg,0461/852541,https://schuleramsharde.lernnetz.de,1,,,,,,,,,1-4,,,,,,,,
 Unesco-Projekt-Schule Flensburg-Weiche,Bahnstraße,20,24941,Flensburg,0461/852553,https://ups-fl.lernnetz.de,1,,,,,,,,,1-4,,,,,,,,
 Waldschule,Waldstraße,44,24939,Flensburg,0461/852545,https://waldschule-flensburg.de,1,,,,,,,,,1-4,,,,,,,,
-Jørgensby-Skolen,Schulgang,2-6,24943,Flensburg,49461141230,https://joeby.skoleporten.dk,1,,,,,,,,,1-6,Sandra Mikkelsen,Dänische Sprache,232,,34,Dansk Skoleforening for Sydslesvig,54.78399775265502,9.447881543139317
-Gustav-Johannsen-Skolen,Eckenerstraße,9,24939,Flensburg,49461587170,https://gustav-johannsen-skolen.skoleporten.dk,,1,,1,,,1,1,,1-10,Solveig Gammelby Aggerholm,Dänische Sprache,352,,57,Dansk Skoleforening for Sydslesvig,54.79436896506982,9.41906385024252
-Jens-Jessen-Skolen,Mürwiker Str.,155 a,24944,Flensburg,4946137171,https://jjskolen.de,1,1,,,,,,,,1-10,Marit Beckmann,Dänische Sprache,325,,34,Dansk Skoleforening for Sydslesvig,54.80651837649137,9.457809220720453
-Cornelius-Hansen-Skolen,Alter Kupfermühlenweg,15,24939,Flensburg,4946141718,https://cornelius-hansen-skolen.skoleporten.dk,1,1,,,,,1,,,1-9,Pernille Hansen Brown,Dänische Sprache,256,22,42,Dansk Skoleforening for Sydslesvig,54.80464627419748,9.418935646888892
-Oksevejens Skole,Alter Husumer Weg,207,24941,Flensburg,494619576100,,1,,,,,,,,,1-?,Kasper Heilmann,Dänische Sprache,119,,22,Dansk Skoleforening for Sydslesvig,54.76116527056325,9.39511670325809
-Duborg-Skolen,Ritterstraße,27,24939,Flensburg,49461144390,https://www.duborg-skolen.dk,,1,1,,,,1,1,1,7-13,Heino Aggedam,Dänische Sprache,594,64,92,Dansk Skoleforening for Sydslesvig,54.79273064882436,9.429229331039718
+Jørgensby-Skolen,Schulgang,2-6,24943,Flensburg,0461/141230,https://joeby.skoleporten.dk,1,,,,,,,,,1-6,Sandra Mikkelsen,Dänische Sprache,232,,34,Dansk Skoleforening for Sydslesvig,54.78399775265502,9.447881543139317
+Gustav-Johannsen-Skolen,Eckenerstraße,9,24939,Flensburg,0461/587170,https://gustav-johannsen-skolen.skoleporten.dk,,1,,1,,,1,1,,1-10,Solveig Gammelby Aggerholm,Dänische Sprache,352,,57,Dansk Skoleforening for Sydslesvig,54.79436896506982,9.41906385024252
+Jens-Jessen-Skolen,Mürwiker Str.,155 a,24944,Flensburg,0461/37171,https://jjskolen.de,1,1,,,,,,,,1-10,Marit Beckmann,Dänische Sprache,325,,34,Dansk Skoleforening for Sydslesvig,54.80651837649137,9.457809220720453
+Cornelius-Hansen-Skolen,Alter Kupfermühlenweg,15,24939,Flensburg,0461/41718,https://cornelius-hansen-skolen.skoleporten.dk,1,1,,,,,1,,,1-9,Pernille Hansen Brown,Dänische Sprache,256,22,42,Dansk Skoleforening for Sydslesvig,54.80464627419748,9.418935646888892
+Oksevejens Skole,Alter Husumer Weg,207,24941,Flensburg,0461/9576100,,1,,,,,,,,,1-?,Kasper Heilmann,Dänische Sprache,119,,22,Dansk Skoleforening for Sydslesvig,54.76116527056325,9.39511670325809
+Duborg-Skolen,Ritterstraße,27,24939,Flensburg,0461/144390,https://www.duborg-skolen.dk,,1,1,,,,1,1,1,7-13,Heino Aggedam,Dänische Sprache,594,64,92,Dansk Skoleforening for Sydslesvig,54.79273064882436,9.429229331039718
