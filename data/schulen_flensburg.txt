@@ -1,0 +1,623 @@
+Schulname: Ostseeschule Flensburg
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA: 1
+MSA: 1
+Abitur:
+Jahrgänge: 1-10
+Schulleiter:
+Vorraussetzung:
+Straße: Klosterholzweg
+Hausnummer: 30
+PLZ: 24944
+City: Flensburg
+Tel: 0461/80724796
+Web: https://www.ostseeschule-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Freie Waldorfschule Flensburg
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA: 1
+MSA: 1
+Abitur: 1
+Jahrgänge: 1-13
+Schulleiter:
+Vorraussetzung:
+Straße: Valentiner Allee
+Hausnummer: 1
+PLZ: 24941
+City: Flensburg
+Tel: 0461/903250
+Web: https://www.waldorfschule-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+
+Schulname: Paulus-Paulsen-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule: 1
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Schulze-Delitzsch-Straße
+Hausnummer: 2
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852543
+Web: http://pps.lernnetz.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Max von der Grün-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule: 1
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Elbestraße
+Hausnummer: 10
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852068
+Web: https://mvdg.lernnetz.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Zentrum für kooperative Erziehungshilfe
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule: 1
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Waitzstraße
+Hausnummer: 16
+PLZ: 24937
+City: Flensburg
+Tel: 0461/852915
+Web: www.zke.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Altes Gymnasium
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule: 1
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge: 5-13
+Schulleiter:
+Vorraussetzung: -
+Straße: Selckstraße
+Hausnummer: 12
+PLZ: 24937
+City: Flensburg
+Tel: 0461/852902
+Web: https://altesgymnasium-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Auguste-Viktoria-Schule Flensburg
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule: 1
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge: 5-13
+Schulleiter:
+Vorraussetzung:
+Straße: Südergraben
+Hausnummer: 34
+PLZ: 24937
+City: Flensburg
+Tel: 0461/852048
+Web: https://www.auguste-viktoria-schule.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Fördegymnasium
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge: 5-13
+Schulleiter:
+Vorraussetzung:
+Straße: Elbestraße
+Hausnummer: 10
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852599
+Web: https://foerdegymnasium.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger: Stadt Flensburg
+Lat:
+Lon:
+
+Schulname: Goethe-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule: 1
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Bismarckstraße
+Hausnummer: 41
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852536
+Web: https://www.goethe.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Fridtjof-Nansen-Schule
+Grundschule:
+Gemeinschaftsschule: 1
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule: 1
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Elbestraße
+Hausnummer: 20
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852009
+Web: https://www.fns-fl.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Kurt-Tucholsky-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Richard-Wagner-Straße
+Hausnummer: 41
+PLZ: 24943
+City: Flensburg
+Tel.: 0461/851350
+Web: https://www.kts-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Comenius-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Drosselweg
+Hausnummer: 12
+PLZ: 24939
+City: Flensburg
+Tel: 0461/852582
+Web: https://comenius.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Gemeinschaftsschule Flensburg-West
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Friesische Lücke
+Hausnummer: 7
+PLZ: 24937
+City: Flensburg
+Tel: 0461/852538
+Web: https://flensburg-west.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Käte-Lassen-Schule
+Grundschule:
+Gemeinschaftsschule:
+Gymnasium: 1
+Förderschule:
+Offene Ganztagsschule: 1
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur: 1
+Jahrgänge:
+Schulleiter:
+Vorraussetzung:
+Straße: Mommsenstraße
+Hausnummer: 45
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852540
+Web: https://www.kaete-lassen-schule.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Falkenbergschule
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Emil-Nolde-Straße
+Hausnummer 31
+PLZ: 24937
+City: Flensburg
+Tel: 0461/852548
+Web: www.falkenbergschule-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Hohlwegschule
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Glücksburger Straße
+Hausnummer: 38
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852587
+Web: www.hohlwegschule.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Schule Adelby
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Ringstraße
+Hausnummer: 1
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852598
+Web: https://schule-adelby.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Schule Auf der Rude
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Lundweg
+Hausnummer: 30
+PLZ: 24941
+City: Flensburg
+Tel: 0461/852556
+Web: https://rudeschule.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Schule Engelsby
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Brahmsstraße
+Hausnummer: 2-4
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852597
+Web: https://schule-engelsby.lernnetz.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Schule Friedheim
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Marrenshof
+Hausnummer: 1
+PLZ: 24944
+City: Flensburg
+Tel: 0461/852529
+Web: schule-friedheim.lernnetz.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Schule Fruerlund
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Bohlberg
+Hausnummer: 56-58
+PLZ: 24943
+City: Flensburg
+Tel: 0461/852554
+Web: www.schule-fruerlund.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+Schulname: Schule Ramsharde
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Am Katharinenhof
+Hausnummer: 29
+PLZ: 24939
+City: Flensburg
+Tel: 0461/852541
+Web: www.schuleramsharde.lernnetz.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Unesco-Projekt-Schule Flensburg-Weiche
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Bahnstraße
+Hausnummer: 20
+PLZ: 24941
+City: Flensburg
+Tel: 0461/852553
+Web: unesco.flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
+
+Schulname: Waldschule
+Grundschule: 1
+Gemeinschaftsschule:
+Gymnasium:
+Förderschule:
+Offene Ganztagsschule:
+Gebundene Ganztagsschule:
+ESA:
+MSA:
+Abitur:
+Jahrgänge: 1-4
+Schulleiter:
+Vorraussetzung:
+Straße: Waldstraße
+Hausnummer: 44
+PLZ: 24939
+City: Flensburg
+Tel: 0461/852545
+Web: https://waldschule-flensburg.de
+Schüler:
+Lehrkräfte:
+Angestellte:
+Schulträger:
+Lat:
+Lon:
