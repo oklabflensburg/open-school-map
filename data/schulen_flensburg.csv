@@ -1,19 +1,19 @@
 Schulname,Straße,Hausnummer,PLZ,City,Tel,Web,Grundschule,Gemeinschaftsschule,Gymnasium,Förderschule,Offene Ganztagsschule,Gebundene Ganztagsschule,ESA,MSA,Abitur,Jahrgänge,Schulleiter,Vorraussetzung,Schüler,Lehrkräfte,Angestellte,Schulträger,Lat,Lon
 Ostseeschule Flensburg,Klosterholzweg,30,24944,Flensburg,0461/80724796,https://www.ostseeschule-flensburg.de,,,,,,,1,1,,1-10,,,,,,gemeinnützige GmbH Ostseeschule Flensburg,54.8106852280366,9.465181480406219
 Freie Waldorfschule Flensburg,Valentiner Allee,1,24941,Flensburg,0461/903250,https://www.waldorfschule-flensburg.de,,,,,,,1,1,1,1-13,,,,,,Verein zur Förderung der Waldorfpädagogik Flensburg e.V.,54.77107730127136,9.445137625321552
-Paulus-Paulsen-Schule,Schulze-Delitzsch-Straße,2,24943,Flensburg,0461/852543,http://pps.lernnetz.de,,,,1,,,,,,,,,,,,,,
-Max von der Grün-Schule,Elbestraße,10,24943,Flensburg,0461/852068,https://mvdg.lernnetz.de,,,,1,,,,,,,,,,,,,,
-Zentrum für kooperative Erziehungshilfe,Waitzstraße,16,24937,Flensburg,0461/852915,,,,,1,,,,,,,,,,,,,,
-Altes Gymnasium,Selckstraße,12,24937,Flensburg,0461/852902,https://altesgymnasium-flensburg.de,,,1,,1,,,,1,5-13,,-,,,,,,
-Auguste-Viktoria-Schule Flensburg,Südergraben,34,24937,Flensburg,0461/852048,https://www.auguste-viktoria-schule.de,,,1,,1,,,,1,5-13,,,,,,,,
-Fördegymnasium,Elbestraße,10,24943,Flensburg,0461/852599,https://foerdegymnasium.de,,,1,,,,,,1,5-13,,,,,,Stadt Flensburg,,
-Goethe-Schule,Bismarckstraße,41,24943,Flensburg,0461/852536,https://www.goethe.flensburg.de,,,1,,1,,,,1,,,,,,,,,
-Fridtjof-Nansen-Schule,Elbestraße,20,24943,Flensburg,0461/852009,https://www.fns-fl.de,,1,1,,,,,,1,,,,,,,,,
-Kurt-Tucholsky-Schule,Richard-Wagner-Straße,41,24943,Flensburg,0461/851350,https://www.kts-flensburg.de,,,1,,,,,,1,,,,,,,,,
-Comenius-Schule,Drosselweg,12,24939,Flensburg,0461/852582,https://comenius.flensburg.de,,,1,,,,,,1,,,,,,,,,
-Gemeinschaftsschule Flensburg-West,Friesische Lücke,7,24937,Flensburg,0461/852538,https://flensburg-west.de,,,1,,1,,,,1,,,,,,,,,
-Käte-Lassen-Schule,Mommsenstraße,45,24943,Flensburg,0461/852540,https://www.kaete-lassen-schule.de,,,1,,1,,,,1,,,,,,,,,
-Falkenbergschule,Emil-Nolde-Straße,31,24937,Flensburg,0461/852548,www.falkenbergschule-flensburg.de,1,,,,,,,,,1-4,,,,,,,,
+Paulus-Paulsen-Schule,Schulze-Delitzsch-Straße,2,24943,Flensburg,0461/852543,http://pps.lernnetz.de,,,,1,,,,,,,,,,,,,54.77835031356787,9.444486657670954
+Max von der Grün-Schule,Elbestraße,10,24943,Flensburg,0461/852068,https://mvdg.lernnetz.de,,,,1,,,,,,,,,,,,,54.80213784893786,9.465190288354771
+Zentrum für kooperative Erziehungshilfe,Waitzstraße,16,24937,Flensburg,0461/852915,,,,,1,,,,,,,,,,,,,54.78009290197649,9.440190249722402
+Altes Gymnasium,Selckstraße,12,24937,Flensburg,0461/852902,https://altesgymnasium-flensburg.de,,,1,,1,,,,1,5-13,,-,,,,,54.78941016688708,9.42829891164523
+Auguste-Viktoria-Schule Flensburg,Südergraben,34,24937,Flensburg,0461/852048,https://www.auguste-viktoria-schule.de,,,1,,1,,,,1,5-13,,,,,,,54.78303731494656,9.431509003696677
+Fördegymnasium,Elbestraße,10,24943,Flensburg,0461/852599,https://foerdegymnasium.de,,,1,,,,,,1,5-13,,,,,,Stadt Flensburg,54.803024721817515,9.465203019038587
+Goethe-Schule,Bismarckstraße,41,24943,Flensburg,0461/852536,https://www.goethe.flensburg.de,,,1,,1,,,,1,,,,,,,,54.787109400678894,9.443800133825297
+Fridtjof-Nansen-Schule,Elbestraße,20,24943,Flensburg,0461/852009,https://www.fns-fl.de,,1,1,,,,,,1,,,,,,,,54.804855329194496,9.460497342329047
+Kurt-Tucholsky-Schule,Richard-Wagner-Straße,41,24943,Flensburg,0461/851350,https://www.kts-flensburg.de,,,1,,,,,,1,,,,,,,,54.78705540147199,9.4692546502776
+Comenius-Schule,Drosselweg,12,24939,Flensburg,0461/852582,https://comenius.flensburg.de,,,1,,,,,,1,,,,,,,,54.80213478568483,9.413813357670954
+Gemeinschaftsschule Flensburg-West,Friesische Lücke,7,24937,Flensburg,0461/852538,https://flensburg-west.de,,,1,,1,,,,1,,,,,,,,54.777160734271625,9.421903811090035
+Käte-Lassen-Schule,Mommsenstraße,45,24943,Flensburg,0461/852540,https://www.kaete-lassen-schule.de,,,1,,1,,,,1,,,,,,,,54.78844290030564,9.450271257670954
+Falkenbergschule,Emil-Nolde-Straße,31,24937,Flensburg,0461/852548,www.falkenbergschule-flensburg.de,1,,,,,,,,,1-4,,,,,,,54.78288597416859,9.410967695748129
 Hohlwegschule,Glücksburger Straße,38,24943,Flensburg,0461/852587,http://www.hohlwegschule.de,1,,,,,,,,,1-4,,,,,,,,
 Schule Adelby,Ringstraße,1,24943,Flensburg,0461/852598,https://schule-adelby.flensburg.de,1,,,,,,,,,1-4,,,,,,,,
 Schule Auf der Rude,Lundweg,30,24941,Flensburg,0461/852556,https://rudeschule.flensburg.de,1,,,,,,,,,1-4,,,,,,,,
