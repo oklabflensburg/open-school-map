@@ -1,31 +1,31 @@
 "Schulname","Grundschule","Gemeinschaftsschule","Gymnasium","Förderschule","Offene Ganztagsschule","Gebundene Ganztagsschule","ESA","MSA","Abitur","Jahrgänge","Schulleiter","Vorraussetzung","Straße","Hausnummer","PLZ","City","Tel","Web","Schüler","Lehrkräfte","Angestellte","Schulträger","Lat","Lon"
-"Ostseeschule Flensburg","","","","","","","1","1","","1-10","","","Klosterholzweg","30","24944","Flensburg","0461/80724796","https://www.ostseeschule-flensburg.de","","","","","",""
-"Freie Waldorfschule Flensburg","","","","","","","1","1","1","1-13","","","Valentiner Allee","1","24941","Flensburg","0461/903250","https://www.waldorfschule-flensburg.de","","","","","",""
-"Paulus-Paulsen-Schule","","","","1","","","","","","","","Schulze-Delitzsch-Straße","2","24943","Flensburg","0461/852543","http://pps.lernnetz.de","","","","","",""
-"Max von der Grün-Schule","","","","1","","","","","","","","Elbestraße","10","24943","Flensburg","0461/852068","https://mvdg.lernnetz.de","","","","","",""
-"Zentrum für kooperative Erziehungshilfe","","","","1","","","","","","","","Waitzstraße","16","24937","Flensburg","0461/852915","www.zke.flensburg.de","","","","","",""
-"Altes Gymnasium","","","1","","1","","","","1","5-13","","-","Selckstraße","12","24937","Flensburg","0461/852902","https://altesgymnasium-flensburg.de","","","","","",""
-"Auguste-Viktoria-Schule Flensburg","","","1","","1","","","","1","5-13","","","Südergraben","34","24937","Flensburg","0461/852048","https://www.auguste-viktoria-schule.de","","","","","",""
-"Fördegymnasium","","","1","","","","","","1","5-13","","","Elbestraße","10","24943","Flensburg","0461/852599","https://foerdegymnasium.de","","Stadt Flensburg","",""
-"Goethe-Schule","","","1","","1","","","","1","","","Bismarckstraße","41","24943","Flensburg","0461/852536","https://www.goethe.flensburg.de","","","","","",""
-"Fridtjof-Nansen-Schule","","1","1","","","","","","1","","","Elbestraße","20","24943","Flensburg","0461/852009","https://www.fns-fl.de","","","","","",""
-"Kurt-Tucholsky-Schule","","","1","","","","","","1","","","Richard-Wagner-Straße","41","24943","Flensburg","0461/851350","https://www.kts-flensburg.de","","","","","",""
-"Comenius-Schule","","","1","","","","","","1","","","Drosselweg","12","24939","Flensburg","0461/852582","https://comenius.flensburg.de","","","","","",""
-"Gemeinschaftsschule Flensburg-West","","","1","","1","","","","1","","","Friesische Lücke","7","24937","Flensburg","0461/852538","https://flensburg-west.de","","","","","",""
-"Käte-Lassen-Schule","","","1","","1","","","","1","","","Mommsenstraße","45","24943","Flensburg","0461/852540","https://www.kaete-lassen-schule.de","","","","","",""
-"Falkenbergschule","1","","","","","","","","","","1-4","","","Emil-Nolde-Straße","31","24937","Flensburg","0461/852548","www.falkenbergschule-flensburg.de","","","","","",""
-"Hohlwegschule","1","","","","","","","","","","1-4","","","Glücksburger Straße","38","24943","Flensburg","0461/852587","www.hohlwegschule.de","","","","","",""
-"Schule Adelby","1","","","","","","","","","","1-4","","","Ringstraße","1","24943","Flensburg","0461/852598","https://schule-adelby.flensburg.de","","","","","",""
-"Schule Auf der Rude","1","","","","","","","","","","1-4","","","Lundweg","30","24941","Flensburg","0461/852556","https://rudeschule.flensburg.de","","","","","",""
-"Schule Engelsby","1","","","","","","","","","","1-4","","","Brahmsstraße","2-4","24943","Flensburg","0461/852597","https://schule-engelsby.lernnetz.de","","","","","",""
-"Schule Friedheim","1","","","","","","","","","","1-4","","","Marrenshof","1","24944","Flensburg","0461/852529","schule-friedheim.lernnetz.de","","","","","",""
-"Schule Fruerlund","1","","","","","","","","","","1-4","","","Bohlberg","56-58","24943","Flensburg","0461/852554","www.schule-fruerlund.flensburg.de","","","","","",""
-"Schule Ramsharde","1","","","","","","","","","","","","","","","","1-4","","","Am Katharinenhof","29","24939","Flensburg","0461/852541","www.schuleramsharde.lernnetz.de","","","","","",""
-"Unesco-Projekt-Schule Flensburg-Weiche","1","","","","","","","","","","1-4","","","Bahnstraße","20","24941","Flensburg","0461/852553","unesco.flensburg.de","","","","","",""
-"Waldschule","1","","","","","","","","","","1-4","","","Waldstraße","44","24939","Flensburg","0461/852545","https://waldschule-flensburg.de","","","","","",""
-Jørgensby-Skolen,"1",,,,,,,,,1-6,Sandra Mikkelsen,Dänische Sprache,Schulgang,2-6,24943,Flensburg,49461141230,www.joeby.skoleintra.dk,232,,34,Dansk Skoleforening for Sydslesvig,54.78399775265502,9.447881543139317
-Gustav-Johannsen-Skolen,,"1",,"1",,,"1",1,,1-10,Solveig Gammelby Aggerholm,Dänische Sprache,Eckenerstraße,9,24939,Flensburg,49461587170,www.gustav-johannsen-skolen.de,352,,57,Dansk Skoleforening for Sydslesvig,54.79436896506982,9.41906385024252
-Jens-Jessen-Skolen,"1",1,,,,,,,,1-10,Marit Beckmann,Dänische Sprache,Mürwiker Straße,155 a,24944,Flensburg,4946137171,https://jjskolen.de,325,,34,Dansk Skoleforening for Sydslesvig,54.80651837649137,9.457809220720453
-Cornelius-Hansen-Skolen,"1",1,,,,,"1",,,1-9,Pernille Hansen Brown,Dänische Sprache,Alter Kupfermühlenweg,15,24939,Flensburg,4946141718,www.cornelius-hansen-skolen.skoleintra.dk,256,22,42,Dansk Skoleforening for Sydslesvig,54.80464627419748,9.418935646888892
-Oksevejens Skole,"1",,,,,,,,,1-?,Kasper Heilmann,Dänische Sprache,Alter Husumer Weg,207,24941,Flensburg,494619576100,www.oksevejensskole.skoleintra.dk,119,,22,Dansk Skoleforening for Sydslesvig,54.76116527056325,9.39511670325809
-Duborg-Skolen,,"1",1,,,,"1",1,"1",7-13,Heino Aggedam,Dänische Sprache,Ritterstraße,27,24939,Flensburg,49461144390,www.duborg-skolen.de,594,64,92,Dansk Skoleforening for Sydslesvig,54.79273064882436,9.429229331039718
+"Ostseeschule Flensburg",,,,,,,1,1,,"1-10",,,"Klosterholzweg",30,24944,"Flensburg","0461/80724796","https://www.ostseeschule-flensburg.de",,,,,,
+"Freie Waldorfschule Flensburg",,,,,,,1,1,1,"1-13",,,"Valentiner Allee",1,24941,"Flensburg","0461/903250","https://www.waldorfschule-flensburg.de",,,,,,
+"Paulus-Paulsen-Schule",,,,1,,,,,,,,,"Schulze-Delitzsch-Straße",2,24943,"Flensburg","0461/852543","http://pps.lernnetz.de",,,,,,
+"Max von der Grün-Schule",,,,1,,,,,,,,,"Elbestraße",10,24943,"Flensburg","0461/852068","https://mvdg.lernnetz.de",,,,,,
+"Zentrum für kooperative Erziehungshilfe",,,,1,,,,,,,,,"Waitzstraße",16,24937,"Flensburg","0461/852915","www.zke.flensburg.de",,,,,,
+"Altes Gymnasium",,,1,,1,,,,1,"5-13",,"-","Selckstraße",12,24937,"Flensburg","0461/852902","https://altesgymnasium-flensburg.de",,,,,,
+"Auguste-Viktoria-Schule Flensburg",,,1,,1,,,,1,"5-13",,,"Südergraben",34,24937,"Flensburg","0461/852048","https://www.auguste-viktoria-schule.de",,,,,,
+"Fördegymnasium",,,1,,,,,,1,"5-13",,,"Elbestraße",10,24943,"Flensburg","0461/852599","https://foerdegymnasium.de",,,,"Stadt Flensburg",,
+"Goethe-Schule",,,1,,1,,,,1,,,,"Bismarckstraße",41,24943,"Flensburg","0461/852536","https://www.goethe.flensburg.de",,,,,,
+"Fridtjof-Nansen-Schule",,1,1,,,,,,1,,,,"Elbestraße",20,24943,"Flensburg","0461/852009","https://www.fns-fl.de",,,,,,
+"Kurt-Tucholsky-Schule",,,1,,,,,,1,,,,"Richard-Wagner-Straße",41,24943,"Flensburg","0461/851350","https://www.kts-flensburg.de",,,,,,
+"Comenius-Schule",,,1,,,,,,1,,,,"Drosselweg",12,24939,"Flensburg","0461/852582","https://comenius.flensburg.de",,,,,,
+"Gemeinschaftsschule Flensburg-West",,,1,,1,,,,1,,,,"Friesische Lücke",7,24937,"Flensburg","0461/852538","https://flensburg-west.de",,,,,,
+"Käte-Lassen-Schule",,,1,,1,,,,1,,,,"Mommsenstraße",45,24943,"Flensburg","0461/852540","https://www.kaete-lassen-schule.de",,,,,,
+"Falkenbergschule",1,,,,,,,,,"1-4",,,"Emil-Nolde-Straße",31,24937,"Flensburg","0461/852548","www.falkenbergschule-flensburg.de",,,,,,
+"Hohlwegschule",1,,,,,,,,,"1-4",,,"Glücksburger Straße",38,24943,"Flensburg","0461/852587","www.hohlwegschule.de",,,,,,
+"Schule Adelby",1,,,,,,,,,"1-4",,,"Ringstraße",1,24943,"Flensburg","0461/852598","https://schule-adelby.flensburg.de",,,,,,
+"Schule Auf der Rude",1,,,,,,,,,"1-4",,,"Lundweg",30,24941,"Flensburg","0461/852556","https://rudeschule.flensburg.de",,,,,,
+"Schule Engelsby",1,,,,,,,,,"1-4",,,"Brahmsstraße","2-4",24943,"Flensburg","0461/852597","https://schule-engelsby.lernnetz.de",,,,,,
+"Schule Friedheim",1,,,,,,,,,"1-4",,,"Marrenshof",1,24944,"Flensburg","0461/852529","schule-friedheim.lernnetz.de",,,,,,
+"Schule Fruerlund",1,,,,,,,,,"1-4",,,"Bohlberg","56-58",24943,"Flensburg","0461/852554","www.schule-fruerlund.flensburg.de",,,,,,
+"Schule Ramsharde",1,,,,,,,,,"1-4",,,"Am Katharinenhof",29,24939,"Flensburg","0461/852541","www.schuleramsharde.lernnetz.de",,,,,,
+"Unesco-Projekt-Schule Flensburg-Weiche",1,,,,,,,,,"1-4",,,"Bahnstraße",20,24941,"Flensburg","0461/852553","unesco.flensburg.de",,,,,,
+"Waldschule",1,,,,,,,,,"1-4",,,"Waldstraße",44,24939,"Flensburg","0461/852545","https://waldschule-flensburg.de",,,,,,
+"Jørgensby-Skolen",1,,,,,,,,,"1-6","Sandra Mikkelsen","Dänische Sprache","Schulgang","2 - 6",24943,"Flensburg",49461141230,"www.joeby.skoleintra.dk",232,,34,"Dansk Skoleforening for Sydslesvig","54.78399775265502","9.447881543139317"
+"Gustav-Johannsen-Skolen",,1,,1,,,1,1,,"1-10","Solveig Gammelby Aggerholm","Dänische Sprache","Eckenerstraße",9,24939,"Flensburg",49461587170,"www.gustav-johannsen-skolen.de",352,,57,"Dansk Skoleforening for Sydslesvig","54.79436896506982","9.41906385024252"
+"Jens-Jessen-Skolen",1,1,,,,,,,,"1-10","Marit Beckmann","Dänische Sprache","Mürwiker Str.","155 a",24944,"Flensburg",4946137171,"https://jjskolen.de",325,,34,"Dansk Skoleforening for Sydslesvig","54.80651837649137","9.457809220720453"
+"Cornelius-Hansen-Skolen",1,1,,,,,1,,,"1-9","Pernille Hansen Brown","Dänische Sprache","Alter Kupfermühlenweg",15,24939,"Flensburg",4946141718,"www.cornelius-hansen-skolen.skoleintra.dk",256,22,42,"Dansk Skoleforening for Sydslesvig","54.80464627419748","9.418935646888892"
+"Oksevejens Skole",1,,,,,,,,,"1-?","Kasper Heilmann","Dänische Sprache","Alter Husumer Weg",207,24941,"Flensburg",494619576100,"www.oksevejensskole.skoleintra.dk",119,,22,"Dansk Skoleforening for Sydslesvig","54.76116527056325","9.39511670325809"
+"Duborg-Skolen",,1,1,,,,1,1,1,"7-13","Heino Aggedam","Dänische Sprache","Ritterstr.",27,24939,"Flensburg",49461144390,"www.duborg-skolen.de",594,64,92,"Dansk Skoleforening for Sydslesvig","54.79273064882436","9.429229331039718"
