@@ -78,7 +78,7 @@ def read_input(src):
             properties['high_school'] = i['Gymnasium'].strip()
 
 
-            geometries['coordinates'] = [i['Lon'], i['Lat']]
+            geometries['coordinates'] = [i['Lat'], i['Lon']]
 
             f = {
                 'geometry': geometries,
