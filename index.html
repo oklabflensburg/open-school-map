@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html prefix="og: https://ogp.me/ns#" lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Schulen in Flensburg</title>
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:title" content="Schulen in Flensburg">
+    <meta property="og:site_name" content="Übersicht der Schulen in Flensburg">
+    <meta property="og:url" content="https://schulen.oklabflensburg.de">
+    <meta property="og:description" content="Offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten">
+    <meta property="og:type" content="website">
+    <meta content="Offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten" name="description">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.js"></script>
+</head>
+<body>
+    <div class="h-screen overflow-auto bg-gray-300">
+        <div class="md:flex">
+            <div class="w-full sm:w-8/12 md:w-7/12 lg:w-9/12 h-96 overflow-hidden" id="map"></div>
+            <div class="w-full sm:w-4/12 md:w-5/12 lg:w-3/12 sm:overflow-scroll bg-gray-100" id="filter">
+                <div class="py-2 px-3">
+                    <h1 class="text-2xl md:text-3xl font-bold">Schulen in Flensburg</h1>
+                    <a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Bildungsatlas Flensburg</a>
+                </div>
+                <div class="">
+                    <div class="hidden bg-gray-300 mt-4 md:mt-6 mx-3" id="details">
+                        <div id="img"></div>
+                        <ul id="detailList"></ul>
+                    </div>
+                </div>
+                <div class="mt-3 md:mt-6 py-2 px-3">
+                   <h3 class="text-xl md:text-2xl mb-1 md:mb-3">Hintergrund</h3>
+                    <p class="font-mono mb-3 md:mb-6">Die Idee einen offenen Bildungsatlas für Flensburg zu entwickeln, ist bei der eigenen Suche nach einer Grundschule für den Lütten geboren. Über die <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen" target="_blank">städtische Website</a> gibt es zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche vergleichbare Informationen zu den einzelnen Schulen noch eine Karte um den etwaigen Schulweg zum Wohnort einzuschätzen. Mit dieser Seite zeigen wir die Machbarkeit eines solchen Systems. Wenn Sie Anregungen, Kritik oder Ergänzungen haben, schreiben Sie uns eine <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="mailto:oklabflensburg@grain.one">E-Mail</a>.</p>
+                    <h3 class="text-xl md:text-2xl mb-1 md:mb-3">Datenquelle</h3>
+                    <p class="font-mono mb-3 md:mb-6">Ein entscheidender Anteil stammt von den jeweiligen verlinkten Schulseiten, etwa die Schulform, Schulleiter, Träger sowie die Kontaktdaten. Zusätzlich haben wir Daten aus dem <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf" target="_blank">Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein</a> herangezogen und in Einzelfällen auf Daten aus dem <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf" target="_blank">Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein</a> zurükgegriffen. Beide Berichte wurden vom Statistischen Amt für Hamburg und Schleswig-Holstein herausgegeben. Die Karten Darstellung wird von engagierten Eltern und ehrenamtlichen des <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://oklabflensburg.de" target="_blank">OK Lab Flensburgs</a> entwickelt.</p>
+                    <h3 class="text-xl md:text-2xl mb-1 md:mb-3">Quellcode</h3>
+                    <p class="font-mono">Der aktuelle Entwicklungsstand kann auf <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://github.com/oklabflensburg/open-school-map" target="_blank">GitHub</a> eingesehen werden und von jeder Kommune, Stadt oder Kreis kostenfrei und lizenzfrei genutzt und redeployed werden.</p>
+                </div>
+            </div>
+        </div>
+        <footer class="h-[4vh] border-t md:border-t-2 border-gray-400 text-sm flex justify-center items-center">
+            <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/lizenz.html">Lizenz</a>
+        </footer>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
