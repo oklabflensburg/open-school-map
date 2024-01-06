@@ -1,5 +1,12 @@
 name: Lighthouse
-on: [pull_request]
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ 'main' ]
+  schedule:
+    - cron: '37 14 * * 4'
 
 jobs:
   lighthouse:
