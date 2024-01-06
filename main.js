@@ -143,15 +143,15 @@ function renderFeatureDetails(feature) {
 
     if (teachers > 0) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Lehrkräfte</strong> ${teachers}</li>`
-    }   
+    }
 
     if (students > 0) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schüler insgesamt</strong> ${students}</li>`
-    }   
+    }
 
     if (grades > 0) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Jahrgangstufen</strong> ${grades}</li>`
-    }   
+    }
 
     if (open_all_day > 0) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Offene Ganztagsschule</strong> ${open_all_day}</li>`
