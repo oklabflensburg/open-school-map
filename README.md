@@ -1,5 +1,8 @@
 # Bildungsatlas Flensburg
 
+
+![Bildungsatlas Flensburg](https://raw.githubusercontent.com/oklabflensburg/open-school-map/main/screenshot_bildungsatlas.jpg)
+
 Der offene Bildungsatlas für Flensburg zeigt auf einer interaktiven Karte regionale Bildungseinrichtungen und eine Vielzahl an Daten an. Die Seite soll Eltern und Institutionen eine einfache und übersichtliche Informationsquelle anbieten.
 
 
