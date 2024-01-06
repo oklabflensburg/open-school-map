@@ -6,7 +6,7 @@ Der offene Bildungsatlas für Flensburg zeigt auf einer interaktiven Karte regio
 
 ## Hintergrund
 
-Die Idee einen offenen Bildungsatlas für Flensburg zu entwickeln, ist bei der Suche nach einer Grundschule für den Kleinen geboren. Über die [städtische Website](https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen) gibt es zwar Kontaktdetails jedoch weder übersichtliche vergleichbare Informationen zu den einzelnen Schulen noch eine Karte um den etwaigen Schulweg zum Wohnort einzuschätzen.
+Die Idee einen offenen Bildungsatlas für Flensburg zu entwickeln, ist bei der Suche nach einer Grundschule für den Kleinen geboren. Über die [städtische Website](https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen) gibt es zwar Kontaktdetails zu den Schulen, jedoch weder eine übersichtliche vergleichbare Informationen zu den einzelnen Schulen noch eine Karte um den etwaigen Schulweg zum Wohnort einzuschätzen. Dies wollen wir ändern.
 
 
 ## Datenquelle
