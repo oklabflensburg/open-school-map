@@ -12,3 +12,15 @@ Die Idee einen offenen Bildungsatlas für Flensburg zu entwickeln, ist bei der S
 ## Datenquelle
 
 Als Daten Grundlage dienen eigene recherchen zu den einzelnen Schulen und Schulformen in Flensburg, sowie das [Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf) und das [Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf) vom Statistischen Amt für Hamburg und Schleswig-Holstein.
+
+
+## Mitmachen
+
+Du kannst jederzeit ein Issue auf GitHub öffnen oder uns über oklabflensburg@grain.one schreiben
+
+
+## Todos
+
+- Geometrien der Spiel- und Pausenflächen von OpenStreetMap extrahieren
+- Anzahl der ausgefallenen Schulstunden pro Schuljahr und Jahrgang anfragen
+- Anzahl der Lehrkräfte und Angestellten pro Schule und Schuljahr anfragen
