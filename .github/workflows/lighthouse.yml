@@ -1,14 +1,12 @@
-name: lighthouse
-on: push
+name: Lighthouse
+on: [pull_request]
+
 jobs:
-  assert-on-budget:
+  lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Lighthouse on urls and validate with budgets.json
-        uses: ./
-        with:
-          urls: 'https://schulen.oklabflensburg.de'
-          budgetPath: '.github/lighthouse/budget.json'
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+    - uses: actions/checkout@v3
+    - name: Lighthouse
+      uses: foo-software/lighthouse-check-action@master
+      with:
+        urls: 'https://schulen.oklabflensburg.de'
