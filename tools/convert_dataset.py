@@ -14,12 +14,6 @@ env_path = Path('../.env')
 load_dotenv(dotenv_path=env_path)
 
 
-try:
-    api_key = os.getenv('API_KEY')
-except Exception as e:
-    raise(e)
-
-
 def generate_geojson(features):
     fc = []
 

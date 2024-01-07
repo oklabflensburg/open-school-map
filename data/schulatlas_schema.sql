@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS school_facility CASCADE;
 
 CREATE TABLE IF NOT EXISTS school_facility (
   id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  district_id INT REFERENCES districts (id),
   city VARCHAR,
   street_name VARCHAR,
   house_number VARCHAR,
