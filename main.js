@@ -53,10 +53,10 @@ const layerStyle = {
 
 const map = L.map('map').setView([54.7836, 9.4321], 13)
 
-L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&Request=GetCapabilities', {
+L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities', {
   layers: 'de_basemapde_web_raster_grau',
   maxZoom: 19,
-  attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE BKG</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
+  attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
 }).addTo(map);
 
 /*L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
