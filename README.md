@@ -1,5 +1,7 @@
 # Bildungsatlas Flensburg
 
+[![Lighthouse CI](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml)
+
 
 ![Bildungsatlas Flensburg](https://raw.githubusercontent.com/oklabflensburg/open-school-map/main/screenshot_bildungsatlas.jpg)
 
