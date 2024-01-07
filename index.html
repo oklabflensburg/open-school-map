@@ -2,14 +2,14 @@
 <html prefix="og: https://ogp.me/ns#" lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Schulen in Flensburg</title>
+    <title>Bildungsatlas mit Schulen in Flensburg</title>
     <meta property="og:locale" content="de_DE">
-    <meta property="og:title" content="Schulen in Flensburg">
-    <meta property="og:site_name" content="Übersicht der Schulen in Flensburg">
+    <meta property="og:title" content="Bildungsatlas mit Schulen in Flensburg">
+    <meta property="og:site_name" content="Stadtplan und Bildungsatlas mit Schulen in Flensburg">
     <meta property="og:url" content="https://schulen.oklabflensburg.de">
-    <meta property="og:description" content="Offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten">
+    <meta property="og:description" content="Stadtplan und offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten">
     <meta property="og:type" content="website">
-    <meta content="Offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten" name="description">
+    <meta content="Stadtplan und offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten" name="description">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet">
@@ -25,10 +25,34 @@
         <div class="md:flex">
             <div class="w-full sm:w-8/12 md:w-7/12 lg:w-9/12 h-96 overflow-hidden" id="map"></div>
             <div class="w-full sm:w-4/12 md:w-5/12 lg:w-3/12 sm:overflow-scroll bg-gray-100" id="filter">
-                <div class="py-2 px-3">
+                <div class="py-2 px-3 mb-4 lg:mb-8">
                     <h1 class="text-2xl md:text-3xl font-bold">Schulen in Flensburg</h1>
-                    <a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Bildungsatlas Flensburg</a>
+                    <h2><a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Bildungsatlas Flensburg</a></h2>
                 </div>
+                <form id="form" enctype="application/x-www-form-urlencoded">
+                    <div class="mx-3 mb-8">
+                        <label class="block text-gray-700 font-bold mb-2" for="district">
+                            Stadtteil auswählen
+                        </label>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer mb-3" id="district" name="district">
+                            <option value="0">Alle Stadtteile</option>
+                            <option value="1">Altstadt</option>
+                            <option value="2">Neustadt</option>
+                            <option value="3">Nordstadt</option>
+                            <option value="4">Westliche Höhe</option>
+                            <option value="5">Friesischer Berg</option>
+                            <option value="6">Weiche</option>
+                            <option value="7">Südstadt</option>
+                            <option value="8">Sandberg</option>
+                            <option value="9">Jürgensby</option>
+                            <option value="10">Fruerlund</option>
+                            <option value="11">Mürwik</option>
+                            <option value="12">Engelsby</option>
+                            <option value="13">Tarup</option>
+                        </select>
+                        <div id="amountFacilities"></div>
+                    </div>
+                </form>
                 <div class="">
                     <div class="hidden bg-gray-300 mt-4 md:mt-6 mx-3" id="details">
                         <div id="img"></div>

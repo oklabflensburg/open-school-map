@@ -1,3 +1,6 @@
+let dataObject = null
+let cluster = null
+
 fetch('./data/schulen_flensburg.geojson', {
     method: 'GET'
 })
@@ -5,7 +8,7 @@ fetch('./data/schulen_flensburg.geojson', {
     return response.json()
 })
 .then((data) => {
-    marker(data)
+    renderPromise(data, 0)
 })
 .catch(function (error) {
     console.log(error)
@@ -54,10 +57,10 @@ const layerStyle = {
 const map = L.map('map').setView([54.7836, 9.4321], 13)
 
 L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities', {
-  layers: 'de_basemapde_web_raster_grau',
+  layers: 'de_basemapde_web_raster_farbe',
   maxZoom: 19,
   attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
-}).addTo(map);
+}).addTo(map)
 
 /*L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -127,7 +130,7 @@ function renderFeatureDetails(feature) {
     const secondary_school = feature.properties.secondary_school
     const high_school = feature.properties.high_school
 
-    let detailOutput = '';
+    let detailOutput = ''
 
     if (facility !== '') {
         detailOutput += `<li class="py-2 px-2 pt-1 text-xl"><strong>${facility}</strong></li>`
@@ -233,13 +236,33 @@ const selectedIcon = L.icon({
 })
 
 
-function marker(data) {
-    let markers = L.markerClusterGroup({
-        zoomToBoundsOnClick: true,
-        disableClusteringAtZoom: 15
-    })
+function formatAmountOfFacilities(amountOfFacilities) {
+    const numberFormat = new Intl.NumberFormat('de-DE')
+    const amount = numberFormat.format(amountOfFacilities)
+
+    return amount
+}
+
+
+function renderPromise(data, districtId) {
+    document.querySelector('#details').classList.add('hidden')
+    document.querySelector('#detailList').innerHTML = ''
+
+    dataObject = data
+
+    if (cluster) {
+        map.removeLayer(cluster)
+    }
 
     const geojsonGroup = L.geoJSON(data, {
+        filter: function (feature) {
+            if (feature.properties.district_id === districtId) {
+                return true
+            } else if (districtId === 0) {
+                return true
+            }
+  
+        },
         onEachFeature: function (feature, layer) {
             layer.on('click', function (e) {
                 document.getElementById('filter').scrollTo({
@@ -269,8 +292,14 @@ function marker(data) {
         }
     })
 
+    cluster = L.markerClusterGroup({
+        spiderfyOnMaxZoom: false,
+        showCoverageOnHover: false,
+        disableClusteringAtZoom: 19,
+        maxClusterRadius: 40
+    })
 
-    markers.on('click', function (a) {
+    cluster.on('click', function (a) {
         if (previousSelectedMarker !== null) {
             previousSelectedMarker.setIcon(defaultIcon)
         }
@@ -279,6 +308,27 @@ function marker(data) {
         previousSelectedMarker = a.layer
     })
 
-    markers.addLayer(geojsonGroup)
-    map.addLayer(markers)
+    cluster.addLayer(geojsonGroup)
+
+    const lengthFacilities = geojsonGroup.getLayers().length
+    const amountOfFacilities = formatAmountOfFacilities(lengthFacilities)
+
+    document.querySelector('#amountFacilities').innerHTML = `Anzahl angezeigter Schulen ${amountOfFacilities}`
+
+    map.addLayer(cluster)
+    map.fitBounds(cluster.getBounds(), {padding: [100, 100, 100, 100]})
+}
+
+
+const queryform = document.querySelector('#form')
+
+if (queryform.length) {
+    queryform.addEventListener('change', (e) => {
+        e.preventDefault()
+
+        const data = new FormData(queryform)
+        const districtId = parseInt(data.get('district'))
+
+        renderPromise(dataObject, districtId)
+    })
 }
