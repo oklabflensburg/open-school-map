@@ -30,42 +30,33 @@ fetch('./data/flensburg_stadtteile.geojson', {
 
 
 const layerStyle = {
-    transparent: {
-        color: 'transparent',
-        fillColor: 'transparent',
-        fillOpacity: 0.7,
-        opacity: 0.6,
-        weight: 1
-    },
     standard: {
         color: '#fff',
-        fillColor: '#11aa44',
+        fillColor: '#b0a944',
         fillOpacity: 0.4,
         opacity: 0.6,
         weight: 3
-    },
-    click: {
-        color: '#fff',
-        fillColor: '#002db4',
-        fillOpacity: 0.4,
-        opacity: 0.8,
-        weight: 4
     }
 }
 
 
 const map = L.map('map').setView([54.7836, 9.4321], 13)
 
-L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities', {
+/* L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities', {
   layers: 'de_basemapde_web_raster_farbe',
   maxZoom: 19,
   attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
-}).addTo(map)
+}).addTo(map) */
 
 /* L.tileLayer('https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/de_basemapde_web_raster_farbe/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png', {
     maxZoom: 19,
     attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
 }).addTo(map) */
+
+L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map)
 
 let geocoder = L.Control.Geocoder.nominatim()
 let previousSelectedMarker = null
@@ -275,9 +266,6 @@ function renderPromise(data, districtId) {
                 if (currentZoom < 15) {
                     map.setView(e.latlng, 15)
                 }
-                else {
-                    map.setView(e.latlng, currentZoom)
-                }
 
                 renderFeatureDetails(e.target.feature)
             })
@@ -312,11 +300,16 @@ function renderPromise(data, districtId) {
 
     const lengthFacilities = geojsonGroup.getLayers().length
     const amountOfFacilities = formatAmountOfFacilities(lengthFacilities)
+    let hintAmountOfFacilities = 'Keine Treffer gefunden'
 
-    document.querySelector('#amountFacilities').innerHTML = `Anzahl angezeigter Schulen ${amountOfFacilities}`
+    if (amountOfFacilities > 0) {
+        hintAmountOfFacilities = `Anzahl angezeigter Schulen ${amountOfFacilities}`
+    }
+
+    document.querySelector('#amountFacilities').innerHTML = hintAmountOfFacilities
 
     map.addLayer(cluster)
-    map.fitBounds(cluster.getBounds(), {padding: [100, 100, 100, 100]})
+    map.fitBounds(cluster.getBounds(), {padding: [0, 0, 0, 0]})
 }
 
 
