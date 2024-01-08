@@ -11,12 +11,14 @@ Der offene Bildungsatlas für Flensburg zeigt auf einer interaktiven Karte regio
 
 ## Hintergrund
 
-Die Idee einen offenen Bildungsatlas für Flensburg zu entwickeln, ist bei der Suche nach einer Grundschule für den Kleinen geboren. Über die [städtische Website](https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen) gibt es zwar Kontaktdetails zu den Schulen, jedoch weder eine übersichtliche vergleichbare Informationen zu den einzelnen Schulen noch eine Karte um den etwaigen Schulweg zum Wohnort einzuschätzen. Dies wollen wir ändern.
+
+
+Die Idee, einen offenen Bildungsatlas für Flensburg zu entwickeln, ist aus der eigenen Suche nach einer Grundschule für den Lütten entstanden. Auf der [städtischen Website](https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen) finden sich zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche, vergleichbare Information zu den einzelnen Schulen noch eine Karte, um den möglichen Schulweg zum Wohnort einzuschätzen. Mit dieser Webseite zeigen wir die Umsetzbarkeit eines solchen Systems.
 
 
 ## Datenquelle
 
-Als Daten Grundlage dienen eigene recherchen zu den einzelnen Schulen und Schulformen in Flensburg, sowie das [Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf) und das [Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf) vom Statistischen Amt für Hamburg und Schleswig-Holstein.
+Ein wesentlicher Teil der Informationen stammt von den verlinkten Seiten, wie beispielsweise zur Schulform, dem Schulleiter, dem Träger und der Anschrift. Zusätzlich haben wir Daten aus dem [Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf) genutzt und in bestimmten Fällen auf Informationen aus dem [Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein](https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf) zurückgegriffen. Die Kartendarstellung wurde von engagierten Eltern und ehrenamtlichen Mitgliedern des [https://oklabflensburg.de](OK Lab Flensburgs) entwickelt.
 
 
 ## Mitmachen
