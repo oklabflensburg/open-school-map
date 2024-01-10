@@ -131,6 +131,10 @@ function renderFeatureDetails(feature) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 py-1">${street_name} ${house_number}<br>${postal_code} ${city}</li>`
     }
 
+    if (prerequisite) {
+        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Voraussetzung</strong> ${prerequisite}</li>`
+    }
+
     if (employees > 0) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Angestellte</strong> ${employees}</li>`
     }
@@ -143,7 +147,7 @@ function renderFeatureDetails(feature) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schüler insgesamt</strong> ${students}</li>`
     }
 
-    if (grades > 0) {
+    if (grades) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Jahrgangstufen</strong> ${grades}</li>`
     }
 
