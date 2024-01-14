@@ -116,12 +116,27 @@ function renderFeatureDetails(feature) {
     const graduation_esa = feature.properties.graduation_esa
     const graduation_msa = feature.properties.graduation_msa
     const graduation_abi = feature.properties.graduation_abi
+    const private_school = feature.properties.private_school
     const special_needs_school = feature.properties.special_needs_school
     const elementary_school = feature.properties.elementary_school
     const secondary_school = feature.properties.secondary_school
     const high_school = feature.properties.high_school
 
     let detailOutput = ''
+    let graduation = ''
+    let school = ''
+
+    let graduation_esa_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">ESA</span>'
+    let graduation_msa_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">MSA</span>'
+    let graduation_abi_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Abitur</span>'
+
+    let private_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Privatschule</span>'
+    let special_needs_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Förderschule</span>'
+    let elementary_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Grundschule</span>'
+    let secondary_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gemeinschaftsschule</span>'
+    let high_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gymnasium</span>'
+    let open_all_day_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Offene Ganztagsschule</span>'
+    let compulsory_all_day_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gebundene Ganztagsschule</span>'
 
     if (facility !== '') {
         detailOutput += `<li class="py-2 px-2 pt-1 text-xl"><strong>${facility}</strong></li>`
@@ -151,40 +166,52 @@ function renderFeatureDetails(feature) {
         detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Jahrgangstufen</strong> ${grades}</li>`
     }
 
-    if (open_all_day > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Offene Ganztagsschule</strong> ${open_all_day}</li>`
-    }
-
-    if (compulsory_all_day > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Gebundene Ganztagsschule</strong> ${compulsory_all_day}</li>`
-    }
-
     if (graduation_esa > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Abschluss ESA</strong> ${graduation_esa}</li>`
+        graduation += graduation_esa_tag
     }
 
     if (graduation_msa > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Abschluss MSA</strong> ${graduation_msa}</li>`
+        graduation += graduation_msa_tag
     }
 
     if (graduation_abi > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Abschluss Abitur</strong> ${graduation_abi}</li>`
+        graduation += graduation_abi_tag
+    }
+
+    if (graduation !== '') {
+        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Abschlüsse</strong><br>${graduation}</li>`
+    }
+
+    if (private_school > 0) {
+        school += private_school_tag
     }
 
     if (special_needs_school > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Förderschule</strong> ${special_needs_school}</li>`
+        school += special_needs_school_tag
     }
 
     if (elementary_school > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Grundschule</strong> ${elementary_school}</li>`
+        school += elementary_school_tag
     }
 
     if (secondary_school > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Gemeinschaftsschule</strong> ${secondary_school}</li>`
+        school += secondary_school_tag
     }
 
     if (high_school > 0) {
-        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Gymnasium</strong> ${high_school}</li>`
+        school += high_school_tag
+    }
+
+    if (open_all_day > 0) {
+        school += open_all_day_tag
+    }
+
+    if (compulsory_all_day > 0) {
+        school += compulsory_all_day_tag
+    }
+
+    if (school !== '') {
+        detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schultyp</strong><br>${school}</li>`
     }
 
     if (institution) {

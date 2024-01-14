@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS school_facility (
   graduation_esa BOOLEAN,
   graduation_msa BOOLEAN,
   graduation_abi BOOLEAN,
+  private_school BOOLEAN,
   special_needs_school BOOLEAN,
   elementary_school BOOLEAN,
   secondary_school BOOLEAN,

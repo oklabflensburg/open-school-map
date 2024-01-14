@@ -57,6 +57,7 @@ def insert_object(cur, properties, geometry):
     graduation_esa = properties['graduation_esa'] if properties['graduation_esa'] else None
     graduation_msa = properties['graduation_msa'] if properties['graduation_msa'] else None
     graduation_abi = properties['graduation_abi'] if properties['graduation_abi'] else None
+    private_school = properties['private_school'] if properties['private_school'] else None
     special_needs_school = properties['special_needs_school'] if properties['special_needs_school'] else None
     elementary_school = properties['elementary_school'] if properties['elementary_school'] else None
     secondary_school = properties['secondary_school'] if properties['secondary_school'] else None
@@ -69,16 +70,16 @@ def insert_object(cur, properties, geometry):
         INSERT INTO school_facility (city, street_name, house_number, postal_code,
             phone_number, website, facility, director, institution, prerequisite,
             employees, teachers, students, grades, open_all_day, compulsory_all_day,
-            graduation_esa, graduation_msa, graduation_abi, special_needs_school,
+            graduation_esa, graduation_msa, graduation_abi, private_school, special_needs_school,
             elementary_school, secondary_school, high_school, wkb_geometry)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     '''
 
     try:
         cur.execute(sql, (city, street_name, house_number, postal_code, phone_number,
             website, facility, director, institution, prerequisite, employees, teachers,
-            students, grades, open_all_day, compulsory_all_day, graduation_esa,
-            graduation_msa, graduation_abi, special_needs_school, elementary_school,
+            students, grades, open_all_day, compulsory_all_day, graduation_esa, graduation_msa,
+            graduation_abi, special_needs_school, private_school, elementary_school,
             secondary_school, high_school, wkb_geometry))
     except UniqueViolation as e:
         print(e)

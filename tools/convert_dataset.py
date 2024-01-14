@@ -66,6 +66,7 @@ def read_input(src):
             properties['graduation_esa'] = i['ESA'].strip()
             properties['graduation_msa'] = i['MSA'].strip()
             properties['graduation_abi'] = i['Abitur'].strip()
+            properties['private_school'] = i['Privatschule'].strip()
             properties['special_needs_school'] = i['Förderschule'].strip()
             properties['elementary_school'] = i['Grundschule'].strip()
             properties['secondary_school'] = i['Gemeinschaftsschule'].strip()
