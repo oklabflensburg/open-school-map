@@ -1,0 +1,21 @@
+{
+  "name": "bildungsatlas",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "parcel": "^2.11.0"
+  },
+  "devDependencies": {
+    "@parcel/config-default": "^2.11.0",
+    "@parcel/transformer-raw": "^2.11.0",
+    "leaflet-control-geocoder": "^2.4.0",
+    "leaflet.markercluster": "^1.5.3",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
+  }
+}

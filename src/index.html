@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Bildungsatlas mit Schulen in Flensburg</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <meta property="og:locale" content="de_DE">
     <meta property="og:title" content="Bildungsatlas mit Schulen in Flensburg">
     <meta property="og:site_name" content="Stadtplan und Bildungsatlas mit Schulen in Flensburg">
@@ -11,14 +12,7 @@
     <meta property="og:type" content="website">
     <meta content="Stadtplan und offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten" name="description">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet">
-    <link href="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.min.js"></script>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <div class="h-screen overflow-auto bg-gray-300">
@@ -70,9 +64,9 @@
             </div>
         </div>
         <footer class="h-[4vh] border-t md:border-t-2 border-gray-400 text-sm flex justify-center items-center">
-            <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="/lizenz.html">Lizenz</a>
+            <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-gray-900 focus:text-gray-900" href="./lizenz.html">Lizenz</a>
         </footer>
     </div>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>

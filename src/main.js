@@ -1,7 +1,22 @@
+import L from 'leaflet'
+import 'leaflet-control-geocoder'
+import 'leaflet.markercluster'
+
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
+
+import schools from 'url:../data/schulen_flensburg.geojson'
+import districts from 'url:../data/flensburg_stadtteile.geojson'
+
+import markerDefault from 'url:../static/marker-icon-blue.png'
+import markerSelected from 'url:../static/marker-icon-red.png'
+import markerShadow from 'url:../static/marker-shadow.png'
+
+
 let dataObject = null
 let cluster = null
 
-fetch('./data/schulen_flensburg.geojson', {
+fetch(schools, {
     method: 'GET'
 })
 .then((response) => {
@@ -15,7 +30,7 @@ fetch('./data/schulen_flensburg.geojson', {
 })
 
 
-fetch('./data/flensburg_stadtteile.geojson', {
+fetch(districts, {
     method: 'GET'
 })
 .then((response) => {
@@ -239,8 +254,8 @@ function renderFeatureDetails(feature) {
 
 
 const defaultIcon = L.icon({
-    iconUrl: './static/marker-icon-blue.png',
-    shadowUrl: './static/marker-shadow.png',
+    iconUrl: markerDefault,
+    shadowUrl: markerShadow,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     tooltipAnchor: [2, -41],
@@ -249,8 +264,8 @@ const defaultIcon = L.icon({
 
 
 const selectedIcon = L.icon({
-    iconUrl: './static/marker-icon-red.png',
-    shadowUrl: './static/marker-shadow.png',
+    iconUrl: markerSelected,
+    shadowUrl: markerShadow,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     tooltipAnchor: [2, -41],
