@@ -323,6 +323,7 @@ function renderPromise(data, districtId) {
                 previousSelectedMarker = layer
                 renderFeatureDetails(feature)
                 map.setView(layer._latlng, 18)
+                console.log(layer._latlng)
             }
 
             layer.on('click', function (e) {
