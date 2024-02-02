@@ -111,7 +111,15 @@ function addDistrictsLayer(data) {
 }
 
 
+function capitalizeEachWord(str) {
+    return str.replace(/-/g, ' ').replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    })
+}
+
+
 function renderFeatureDetails(feature) {
+    const slug = feature.properties.slug
     const city = feature.properties.city
     const street_name = feature.properties.street_name
     const house_number = feature.properties.house_number
@@ -136,6 +144,12 @@ function renderFeatureDetails(feature) {
     const elementary_school = feature.properties.elementary_school
     const secondary_school = feature.properties.secondary_school
     const high_school = feature.properties.high_school
+
+    const title = `${capitalizeEachWord(slug)} - Schulen in Flensburg`
+
+    document.querySelector('title').innerHTML = title
+    document.querySelector('meta[property="og:title"]').setAttribute('content', title)
+    document.querySelector('meta[property="og:url"]').setAttribute('content', `${window.location.href}${slug}`)
 
     let detailOutput = ''
     let graduation = ''
@@ -301,6 +315,16 @@ function renderPromise(data, districtId) {
   
         },
         onEachFeature: function (feature, layer) {
+            const slug = String(feature.properties.slug)
+            const path = decodeURIComponent(window.location.pathname)
+
+            if (slug === path.slice(1)) {
+                layer.setIcon(selectedIcon)
+                previousSelectedMarker = layer
+                renderFeatureDetails(feature)
+                map.setView(layer._latlng, 18)
+            }
+
             layer.on('click', function (e) {
                 document.getElementById('filter').scrollTo({
                     top: 0,
@@ -313,7 +337,12 @@ function renderPromise(data, districtId) {
                     map.setView(e.latlng, 15)
                 }
 
+                const slug = e.target.feature.properties.slug
+
+                map.setView(e.latlng, 18)
                 renderFeatureDetails(e.target.feature)
+                history.pushState({ page: slug }, slug, slug)
+
             })
         },
         pointToLayer: function (feature, latlng) {
@@ -371,3 +400,7 @@ if (queryform.length) {
         renderPromise(dataObject, districtId)
     })
 }
+
+window.addEventListener("popstate", (event) => {
+    console.debug(`location: ${document.location}, state: ${JSON.stringify(event.state)}`)
+})
