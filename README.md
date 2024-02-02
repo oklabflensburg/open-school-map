@@ -1,7 +1,8 @@
 # Bildungsatlas Flensburg
 
+[![Lint css files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-css.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-css.yml)
 [![Lint html files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-html.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-html.yml)
-[![Lint javascript files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml)
+[![Lint js files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml)
 [![Lighthouse CI](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml)
 
 
