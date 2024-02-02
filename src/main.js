@@ -323,7 +323,6 @@ function renderPromise(data, districtId) {
                 previousSelectedMarker = layer
                 renderFeatureDetails(feature)
                 map.setView(layer._latlng, 18)
-                console.log(layer._latlng)
             }
 
             layer.on('click', function (e) {
@@ -373,6 +372,7 @@ function renderPromise(data, districtId) {
     })
 
     cluster.addLayer(geojsonGroup)
+    map.addLayer(cluster)
 
     const lengthFacilities = geojsonGroup.getLayers().length
     const amountOfFacilities = formatAmountOfFacilities(lengthFacilities)
@@ -380,12 +380,10 @@ function renderPromise(data, districtId) {
 
     if (amountOfFacilities > 0) {
         hintAmountOfFacilities = `Anzahl angezeigter Schulen ${amountOfFacilities}`
+        map.fitBounds(cluster.getBounds(), {padding: [0, 0, 0, 0]})
     }
 
     document.querySelector('#amountFacilities').innerHTML = hintAmountOfFacilities
-
-    map.addLayer(cluster)
-    map.fitBounds(cluster.getBounds(), {padding: [0, 0, 0, 0]})
 }
 
 
