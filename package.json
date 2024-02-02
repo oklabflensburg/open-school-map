@@ -2,6 +2,9 @@
   "name": "bildungsatlas",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
+  "staticFiles": {
+    "staticPath": "static"
+  },
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
@@ -15,6 +18,7 @@
     "@parcel/transformer-raw": "^2.11.0",
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet.markercluster": "^1.5.3",
+    "parcel-reporter-static-files-copy": "^1.5.3",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1"
   }

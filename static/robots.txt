@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /lizenz.html
+Disallow: /impressum.html
+
+Sitemap: https://schulen.oklabflensburg.de/sitemap.xml

@@ -4,6 +4,7 @@ import os
 import csv
 import click
 import json
+import re
 
 from dotenv import load_dotenv
 from geojson import FeatureCollection, Feature, Point
@@ -37,6 +38,29 @@ def generate_geojson(features):
     return c
 
 
+def replace_umlauts(string):
+    slug = string
+
+    tpl = (('ü', 'ue'), ('Ü', 'Ue'), ('ä', 'ae'), ('Ä', 'Ae'), ('ö', 'oe'), ('Ö', 'Oe'), ('ß', 'ss'))
+
+    for item1, item2 in tpl:
+        slug = slug.replace(item1, item2)
+
+    return slug
+
+
+def get_slug(values):
+    parts = []
+
+    for value in values:
+        parts.append(re.sub('[\d\s!@#\$%\^&\*\(\)\[\]{};:,\./<>\?\|`~\-=_\+]', ' ', value))
+
+    slug = ' '.join(list(dict.fromkeys(parts))).lower()
+    slug = re.sub(r'\s+', ' ', replace_umlauts(slug)).replace(' ', '-')
+
+    return slug
+
+
 def read_input(src):
     features = []
 
@@ -46,6 +70,7 @@ def read_input(src):
         for i in reader:
             properties = {}
             geometries = {}
+            values = []
 
             properties['street_name'] = i['Straße'].strip()
             properties['house_number'] = i['Hausnummer'].strip()
@@ -71,6 +96,16 @@ def read_input(src):
             properties['elementary_school'] = i['Grundschule'].strip()
             properties['secondary_school'] = i['Gemeinschaftsschule'].strip()
             properties['high_school'] = i['Gymnasium'].strip()
+
+            if i['Schulname']:
+                for item in re.split(r'[ |-]', i['Schulname']):
+                    values.append(item)
+
+            if i['City']:
+                for item in re.split(r'[ |-]', i['City']):
+                    values.append(item)
+
+            properties['slug'] = get_slug(values)
 
 
             geometries['coordinates'] = [i['Lat'], i['Lon']]

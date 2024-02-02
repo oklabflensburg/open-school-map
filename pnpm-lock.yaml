@@ -25,6 +25,9 @@ devDependencies:
   leaflet.markercluster:
     specifier: ^1.5.3
     version: 1.5.3(leaflet@1.9.4)
+  parcel-reporter-static-files-copy:
+    specifier: ^1.5.3
+    version: 1.5.3(@parcel/core@2.11.0)
   postcss:
     specifier: ^8.4.33
     version: 8.4.33
@@ -1890,6 +1893,15 @@ packages:
 
   /ordered-binary@1.5.1:
     resolution: {integrity: sha512-5VyHfHY3cd0iza71JepYG50My+YUbrFtGoUz2ooEydPyPM7Aai/JW098juLr+RG6+rDJuzNNTsEQu2DZa1A41A==}
+
+  /parcel-reporter-static-files-copy@1.5.3(@parcel/core@2.11.0):
+    resolution: {integrity: sha512-Ukq2SyJYn3GFIPCLamXuQ+2t+0j54llujjOUoRjtmVvfsuGnJDEpMznADeIoKuQDvy0jpxtWzWkQvxqI/j+U4A==}
+    engines: {parcel: ^2.0.0-beta.1}
+    dependencies:
+      '@parcel/plugin': 2.11.0(@parcel/core@2.11.0)
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
 
   /parcel@2.11.0(postcss@8.4.33):
     resolution: {integrity: sha512-H/RI1/DmuOkL8RuG/EpNPvtzrbF+7jA/R56ydEEm+lqFbYktKB4COR7JXdHkZXRgbSJyimrFB8d0r9+SaRnj0Q==}
