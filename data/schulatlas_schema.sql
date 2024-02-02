@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS school_facility (
   elementary_school BOOLEAN,
   secondary_school BOOLEAN,
   high_school BOOLEAN,
+  slug VARCHAR,
   wkb_geometry GEOMETRY(GEOMETRY, 4326)
 );
 

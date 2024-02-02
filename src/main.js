@@ -151,46 +151,46 @@ function renderFeatureDetails(feature) {
 
   let detailOutput = ''
   let graduation = ''
+  let daycare = ''
   let school = ''
 
-  const graduation_esa_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">ESA</span>'
-  const graduation_msa_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">MSA</span>'
-  const graduation_abi_tag = '<span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Abitur</span>'
+  const graduation_esa_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">ESA</span>'
+  const graduation_msa_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">MSA</span>'
+  const graduation_abi_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">Abitur</span>'
 
-  const private_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Privatschule</span>'
-  const special_needs_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Förderschule</span>'
-  const elementary_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Grundschule</span>'
-  const secondary_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gemeinschaftsschule</span>'
-  const high_school_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gymnasium</span>'
-  const open_all_day_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Offene Ganztagsschule</span>'
-  const compulsory_all_day_tag = '<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Gebundene Ganztagsschule</span>'
+  const special_needs_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Förderschule</span>'
+  const elementary_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Grundschule</span>'
+  const secondary_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Gemeinschaftsschule</span>'
+  const high_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Gymnasium</span>'
+  const open_all_day_tag = '<span class="font-sans bg-emerald-100 text-emerald-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-emerald-900 dark:text-emerald-300">Offene Ganztagsschule</span>'
+  const compulsory_all_day_tag = '<span class="font-sans bg-emerald-100 text-emerald-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-emerald-900 dark:text-emerald-300">Gebundene Ganztagsschule</span>'
 
   if (facility !== '') {
-    detailOutput += `<li class="py-2 px-2 pt-1 text-xl"><strong>${facility}</strong></li>`
+    detailOutput += `<li class="pb-2 text-xl lg:text-2xl"><strong>${facility}</strong></li>`
   }
 
   if (street_name !== '' && house_number !== '' && postal_code !== '' && city !== '') {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 py-1">${street_name} ${house_number}<br>${postal_code} ${city}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 py-1 mb-3">${street_name} ${house_number}<br>${postal_code} ${city}</li>`
   }
 
   if (prerequisite) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Voraussetzung</strong> ${prerequisite}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Voraussetzung</strong><br>${prerequisite}</li>`
   }
 
   if (employees > 0) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Angestellte</strong> ${employees}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>${employees}</strong> Angestellte</li>`
   }
 
   if (teachers > 0) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Lehrkräfte</strong> ${teachers}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>${teachers}</strong> Lehrkräfte</li>`
   }
 
   if (students > 0) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schüler insgesamt</strong> ${students}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>${students}</strong> Schüler:innen</li>`
   }
 
   if (grades) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Jahrgangstufen</strong> ${grades}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Jahrgangstufen</strong> ${grades}</li>`
   }
 
   if (graduation_esa > 0) {
@@ -206,11 +206,7 @@ function renderFeatureDetails(feature) {
   }
 
   if (graduation !== '') {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Abschlüsse</strong><br>${graduation}</li>`
-  }
-
-  if (private_school > 0) {
-    school += private_school_tag
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Abschlüsse</strong><br>${graduation}</li>`
   }
 
   if (special_needs_school > 0) {
@@ -229,32 +225,36 @@ function renderFeatureDetails(feature) {
     school += high_school_tag
   }
 
+  if (school !== '') {
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Schultyp</strong><br>${school}</li>`
+  }
+
   if (open_all_day > 0) {
-    school += open_all_day_tag
+    daycare += open_all_day_tag
   }
 
   if (compulsory_all_day > 0) {
-    school += compulsory_all_day_tag
+    daycare += compulsory_all_day_tag
   }
 
   if (school !== '') {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schultyp</strong><br>${school}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Ganztagsbetreuung</strong><br>${daycare}</li>`
   }
 
   if (institution) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Träger</strong><br>${institution}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Träger</strong><br>${institution}</li>`
   }
 
   if (website) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Website</strong><br><a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" target="_blank" href="${website}">${website}</a></li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Website</strong><br><a class="text-sky-200 hover:text-sky-100 focus:text-sky-100" target="_blank" href="${website}">${website}</a></li>`
   }
 
   if (phone_number) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Telefon</strong><br><a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="tel:${phone_number}">${phone_number}</a></li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Telefon</strong><br><a class="text-sky-200 hover:text-sky-100 focus:text-sky-100" href="tel:${phone_number}">${phone_number}</a></li>`
   }
 
   if (director) {
-    detailOutput += `<li class="last-of-type:pb-2 px-2 pt-2"><strong>Schulleiter</strong><br>${director}</li>`
+    detailOutput += `<li class="pt-2"><strong>Schulleiter</strong><br>${director}</li>`
   }
 
   document.querySelector('#details').classList.remove('hidden')
@@ -319,6 +319,7 @@ function renderPromise(data, districtId) {
       const path = decodeURIComponent(window.location.pathname)
 
       if (slug === path.slice(1)) {
+        document.querySelector('#about').classList.add('hidden')
         layer.setIcon(selectedIcon)
         previousSelectedMarker = layer
         renderFeatureDetails(feature)
@@ -338,6 +339,7 @@ function renderPromise(data, districtId) {
           map.setView(e.latlng, 15)
         }
 
+        document.querySelector('#about').classList.add('hidden')
         map.setView(e.latlng, 18)
         renderFeatureDetails(e.target.feature)
         history.pushState({ page: slug }, slug, slug)
