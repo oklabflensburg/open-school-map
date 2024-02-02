@@ -1,5 +1,7 @@
 # Bildungsatlas Flensburg
 
+[![Lint html files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-html.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-html.yml)
+[![Lint javascript files](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lint-js.yml)
 [![Lighthouse CI](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/oklabflensburg/open-school-map/actions/workflows/lighthouse.yml)
 
 
@@ -10,8 +12,6 @@ Der offene Bildungsatlas für Flensburg zeigt auf einer interaktiven Karte regio
 
 
 ## Hintergrund
-
-
 
 Die Idee, einen offenen Bildungsatlas für Flensburg zu entwickeln, ist aus der eigenen Suche nach einer Grundschule für den Lütten entstanden. Auf der [städtischen Website](https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen) finden sich zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche, vergleichbare Information zu den einzelnen Schulen noch eine Karte, um den möglichen Schulweg zum Wohnort einzuschätzen. Mit dieser Webseite zeigen wir die Umsetzbarkeit eines solchen Systems.
 
