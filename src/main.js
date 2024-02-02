@@ -75,6 +75,7 @@ L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
 
 let geocoder = L.Control.Geocoder.nominatim()
 let previousSelectedMarker = null
+let slugUrlActive = null
 
 
 if (typeof URLSearchParams !== 'undefined' && location.search) {
@@ -323,6 +324,7 @@ function renderPromise(data, districtId) {
                 previousSelectedMarker = layer
                 renderFeatureDetails(feature)
                 map.setView(layer._latlng, 18)
+                slugUrlActive = true
             }
 
             layer.on('click', function (e) {
@@ -380,6 +382,9 @@ function renderPromise(data, districtId) {
 
     if (amountOfFacilities > 0) {
         hintAmountOfFacilities = `Anzahl angezeigter Schulen ${amountOfFacilities}`
+    }
+
+    if (slugUrlActive === null) {
         map.fitBounds(cluster.getBounds(), {padding: [0, 0, 0, 0]})
     }
 
