@@ -15,23 +15,23 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-    <div class="h-screen overflow-auto bg-gray-800">
+    <div class="h-screen overflow-auto bg-slate-50">
         <div class="md:flex">
             <div class="w-full sm:w-8/12 md:w-7/12 lg:w-9/12 h-96 overflow-hidden" id="map"></div>
-            <div class="w-full sm:w-4/12 md:w-5/12 lg:w-3/12 sm:overflow-scroll bg-gray-100" id="filter">
+            <div class="w-full sm:w-4/12 md:w-5/12 lg:w-3/12 sm:overflow-scroll" id="filter">
                 <div class="py-2 px-3 mb-4 lg:mb-8">
-                    <h1 class="font-mluvka tracking-normal leading-normal font-black text-2xl md:text-3xl lg:text-4xl mb-1">Schulen in Flensburg</h1>
-                    <h2><a href="/" class="font-manrope text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Regionaler Bildungsatlas</a></h2>
+                    <h1 class="tracking-normal leading-normal font-bold text-2xl md:text-3xl lg:text-4xl mb-1">Schulen in Flensburg</h1>
+                    <h2><a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Regionaler Bildungsatlas</a></h2>
                 </div>
-                <div class="hidden bg-gray-700 font-mluvka font-sans leading-normal text-md lg:text-lg text-gray-100 mb-3 lg:mb-6 mx-3 p-3" id="details">
+                <div class="hidden leading-normal text-md lg:text-lg bg-white border border-slate-300 rounded text-black mb-3 lg:mb-6 mx-3 p-3" id="details">
                     <ul id="detailList"></ul>
                 </div>
                 <form id="form" enctype="application/x-www-form-urlencoded">
-                    <div class="mx-3 mb-8">
-                        <label class="font-mluvka font-black text-xl text-gray-700 block mb-2" for="district">
+                    <div class="p-3">
+                        <label class="font-bold text-lg lg:text-xl block mb-2" for="district">
                             Stadtteil auswählen
                         </label>
-                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer mb-3" id="district" name="district">
+                        <select class="w-full appearance-none bg-white border text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer py-2 px-3 mb-1" id="district" name="district">
                             <option value="0">Alle Stadtteile</option>
                             <option value="1">Altstadt</option>
                             <option value="2">Neustadt</option>
@@ -51,17 +51,17 @@
                     </div>
                 </form>
                 <div class="mt-3 md:mt-6 py-2 px-3" id="about">
-                   <h3 class="font-manrope font-bold text-xl md:text-2xl mb-1">Hintergrund</h3>
-                    <p class="font-mluvka font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Die Idee, einen offenen Bildungsatlas für Flensburg zu entwickeln, ist aus der eigenen Suche nach einer Grundschule für den Lütten entstanden. Auf der <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen" target="_blank">städtischen Website</a> finden sich zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche, vergleichbare Information zu den einzelnen Schulen noch eine Karte, um den möglichen Schulweg zum Wohnort einzuschätzen. Mit dieser Webseite zeigen wir die Umsetzbarkeit eines solchen Systems. Falls Sie Anregungen, Kritik oder Ergänzungen haben, schreiben Sie uns bitte eine <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="mailto:oklabflensburg@grain.one">E-Mail</a>.</p>
-                    <h3 class="font-manrope font-bold text-xl md:text-2xl mb-1">Datenquelle</h3>
-                    <p class="font-mluvka font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Ein wesentlicher Teil der Informationen stammt von den verlinkten Seiten, wie beispielsweise zur Schulform, dem Schulleiter, dem Träger und der Anschrift. Zusätzlich haben wir Daten aus dem <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf" target="_blank">Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein</a> genutzt und in bestimmten Fällen auf Informationen aus dem <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf" target="_blank">Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein</a> zurückgegriffen. Die Kartendarstellung wurde von engagierten Eltern und ehrenamtlichen Mitgliedern des <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://oklabflensburg.de" target="_blank">OK Lab Flensburgs</a> entwickelt.</p>
-                    <h3 class="font-manrope font-bold text-xl md:text-2xl mb-1">Quellcode</h3>
-                    <p class="font-mluvka font-normal leading-normal text-md lg:text-lg">Der aktuelle Entwicklungsstand ist auf <a class="text-blue-600 hover:text-blue-500 focus:text-blue:500" href="https://github.com/oklabflensburg/open-school-map" target="_blank">GitHub</a> einsehbar und kann von jeder Kommune, Stadt oder Kreis kostenfrei und lizenzfrei genutzt sowie neu bereitgestellt werden.</p>
+                   <h3 class="font-bold text-xl md:text-2xl mb-1">Hintergrund</h3>
+                    <p class="font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Die Idee, einen offenen Bildungsatlas für Flensburg zu entwickeln, ist aus der eigenen Suche nach einer Grundschule für den Lütten entstanden. Auf der <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen" target="_blank">städtischen Website</a> finden sich zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche, vergleichbare Information zu den einzelnen Schulen noch eine Karte, um den möglichen Schulweg zum Wohnort einzuschätzen. Mit dieser Webseite zeigen wir die Umsetzbarkeit eines solchen Systems. Falls Sie Anregungen, Kritik oder Ergänzungen haben, schreiben Sie uns bitte eine <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="mailto:oklabflensburg@grain.one">E-Mail</a>.</p>
+                    <h3 class="font-bold text-xl md:text-2xl mb-1">Datenquelle</h3>
+                    <p class="font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Ein wesentlicher Teil der Informationen stammt von den verlinkten Seiten, wie beispielsweise zur Schulform, dem Schulleiter, dem Träger und der Anschrift. Zusätzlich haben wir Daten aus dem <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf" target="_blank">Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein</a> genutzt und in bestimmten Fällen auf Informationen aus dem <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf" target="_blank">Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein</a> zurückgegriffen. Die Kartendarstellung wurde von engagierten Eltern und ehrenamtlichen Mitgliedern des <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://oklabflensburg.de" target="_blank">OK Lab Flensburgs</a> entwickelt.</p>
+                    <h3 class="font-bold text-xl md:text-2xl mb-1">Quellcode</h3>
+                    <p class="font-normal leading-normal text-md lg:text-lg">Der aktuelle Entwicklungsstand ist auf <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://github.com/oklabflensburg/open-school-map" target="_blank">GitHub</a> einsehbar und kann von jeder Kommune, Stadt oder Kreis kostenfrei und lizenzfrei genutzt sowie neu bereitgestellt werden.</p>
                 </div>
             </div>
         </div>
-        <footer class="font-mluvka bg-gray-200 h-[4vh] border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
-            <a class="inline-block text-gray-700 hover:text-sky-800 focus:text-sky-800" href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-sky-800 focus:text-sky-800" href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-sky-800 focus:text-sky-800" href="./lizenz.html">Lizenz</a>
+        <footer class="bg-gray-200 h-[4vh] border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
+            <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./lizenz.html">Lizenz</a>
         </footer>
     </div>
 

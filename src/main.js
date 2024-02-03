@@ -154,16 +154,17 @@ function renderFeatureDetails(feature) {
   let daycare = ''
   let school = ''
 
-  const graduation_esa_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">ESA</span>'
-  const graduation_msa_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">MSA</span>'
-  const graduation_abi_tag = '<span class="font-sans bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-pink-900 dark:text-pink-300">Abitur</span>'
+  const graduation_esa_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">ESA</a>'
+  const graduation_msa_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">MSA</a>'
+  const graduation_abi_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Abitur</a>'
 
-  const special_needs_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Förderschule</span>'
-  const elementary_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Grundschule</span>'
-  const secondary_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Gemeinschaftsschule</span>'
-  const high_school_tag = '<span class="font-sans bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300">Gymnasium</span>'
-  const open_all_day_tag = '<span class="font-sans bg-emerald-100 text-emerald-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-emerald-900 dark:text-emerald-300">Offene Ganztagsschule</span>'
-  const compulsory_all_day_tag = '<span class="font-sans bg-emerald-100 text-emerald-800 text-xs font-medium me-2 px-2.5 py-1 rounded dark:bg-emerald-900 dark:text-emerald-300">Gebundene Ganztagsschule</span>'
+  const special_needs_school_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Förderschule</a>'
+  const elementary_school_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Grundschule</a>'
+  const secondary_school_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Gemeinschaftsschule</a>'
+  const high_school_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Gymnasium</a>'
+
+  const open_all_day_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Offene Ganztagsschule</a>'
+  const compulsory_all_day_tag = '<a href="#" class="font-sans bg-blue-100 text-blue-800 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white text-xs font-medium me-2 px-2.5 py-1 rounded">Gebundene Ganztagsschule</a>'
 
   if (facility !== '') {
     detailOutput += `<li class="pb-2 text-xl lg:text-2xl"><strong>${facility}</strong></li>`
@@ -246,15 +247,15 @@ function renderFeatureDetails(feature) {
   }
 
   if (website) {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Website</strong><br><a class="text-sky-200 hover:text-sky-100 focus:text-sky-100" target="_blank" href="${website}">${website}</a></li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Website</strong><br><a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" target="_blank" href="${website}">${website}</a></li>`
   }
 
   if (phone_number) {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Telefon</strong><br><a class="text-sky-200 hover:text-sky-100 focus:text-sky-100" href="tel:${phone_number}">${phone_number}</a></li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Telefon</strong><br><a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="tel:${phone_number}">${phone_number}</a></li>`
   }
 
   if (director) {
-    detailOutput += `<li class="pt-2"><strong>Schulleiter</strong><br>${director}</li>`
+    detailOutput += `<li class="pt-2"><strong>Schulleitung</strong><br>${director}</li>`
   }
 
   document.querySelector('#details').classList.remove('hidden')
