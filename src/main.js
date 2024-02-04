@@ -65,6 +65,7 @@ const map = L.map('map').setView([54.7836, 9.4321], 13)
 
 L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
   maxZoom: 18,
+  tileSize: 256,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map)
 
