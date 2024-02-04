@@ -8,9 +8,8 @@ import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
 import schools from 'url:../data/schulen_flensburg.geojson'
 import districts from 'url:../data/flensburg_stadtteile.geojson'
 
-import markerDefault from 'url:../static/marker-icon-blue.png'
-import markerSelected from 'url:../static/marker-icon-red.png'
-import markerShadow from 'url:../static/marker-shadow.png'
+import markerDefault from 'url:../static/marker-icon-default.webp'
+import markerSelected from 'url:../static/marker-icon-active.webp'
 
 
 let dataObject = null
@@ -268,21 +267,17 @@ function renderFeatureDetails(feature) {
 
 const defaultIcon = L.icon({
   iconUrl: markerDefault,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  tooltipAnchor: [2, -41],
-  shadowSize: [45, 41]
+  iconSize: [25, 35],
+  iconAnchor: [12, 35],
+  tooltipAnchor: [0, -35]
 })
 
 
 const selectedIcon = L.icon({
   iconUrl: markerSelected,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  tooltipAnchor: [2, -41],
-  shadowSize: [45, 41]
+  iconSize: [25, 35],
+  iconAnchor: [12, 35],
+  tooltipAnchor: [0, -35]
 })
 
 
