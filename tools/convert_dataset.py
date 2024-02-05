@@ -41,7 +41,7 @@ def generate_geojson(features):
 def replace_umlauts(string):
     slug = string
 
-    tpl = (('ü', 'ue'), ('Ü', 'Ue'), ('ä', 'ae'), ('Ä', 'Ae'), ('ö', 'oe'), ('Ö', 'Oe'), ('ß', 'ss'))
+    tpl = (('ü', 'ue'), ('Ü', 'Ue'), ('ä', 'ae'), ('Ä', 'Ae'), ('ö', 'oe'), ('Ö', 'Oe'), ('ß', 'ss'), ('ø', 'oe'))
 
     for item1, item2 in tpl:
         slug = slug.replace(item1, item2)
