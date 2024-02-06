@@ -22,6 +22,6 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            https://schulen.oklabflensburg.de
+            https://schulen-flensburg.de
           uploadArtifacts: false
           temporaryPublicStorage: true
