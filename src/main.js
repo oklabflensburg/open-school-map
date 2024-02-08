@@ -9,7 +9,7 @@ import schools from 'url:../data/schulen_flensburg.geojson'
 import districts from 'url:../data/flensburg_stadtteile.geojson'
 
 import markerDefault from 'url:../static/marker-icon-default.webp'
-import markerSelected from 'url:../static/marker-icon-active.webp'
+import markerActive from 'url:../static/marker-icon-active.webp'
 
 
 let dataObject = null
@@ -227,7 +227,7 @@ function renderFeatureDetails(feature) {
   }
 
   if (school !== '') {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Schultyp</strong><br>${school}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Schulform</strong><br>${school}</li>`
   }
 
   if (open_all_day > 0) {
@@ -268,17 +268,17 @@ function renderFeatureDetails(feature) {
 
 const defaultIcon = L.icon({
   iconUrl: markerDefault,
-  iconSize: [25, 35],
-  iconAnchor: [12, 35],
-  tooltipAnchor: [0, -35]
+  iconSize: [30, 36],
+  iconAnchor: [15, 36],
+  tooltipAnchor: [0, -37]
 })
 
 
 const selectedIcon = L.icon({
-  iconUrl: markerSelected,
-  iconSize: [25, 35],
-  iconAnchor: [12, 35],
-  tooltipAnchor: [0, -35]
+  iconUrl: markerActive,
+  iconSize: [30, 36],
+  iconAnchor: [15, 36],
+  tooltipAnchor: [0, -37]
 })
 
 
