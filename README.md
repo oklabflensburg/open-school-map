@@ -27,6 +27,86 @@ Ein wesentlicher Teil der Informationen stammt von den verlinkten Seiten, wie be
 Du kannst jederzeit ein Issue auf GitHub öffnen oder uns über oklabflensburg@grain.one schreiben
 
 
+
+## How to Build
+
+You must execute this commands in the root directory. Make sure you have node installed on your machine, then install dependencies. 
+
+```
+pnpm install
+```
+
+
+When you want to build the project run the following command
+
+```
+pnpm build
+```
+
+
+When you are developing on your local machine run this command
+
+```
+pnpm start
+```
+
+
+
+## Prerequisite
+
+Install system dependencies and clone repository
+
+```
+sudo apt install git git-lfs virtualenv python3 python3-pip postgresql-16 postgresql-16-postgis-3 postgis
+git clone https://github.com/oklabflensburg/open-school-map.git
+```
+
+Create a dot `.env` file inside root directory. Make sure to add the following content repaced by your own values
+
+```
+DB_PASS=postgres
+DB_HOST=localhost
+DB_USER=postgres
+DB_NAME=postgres
+DB_PORT=5432
+```
+
+
+## Update repository
+
+```
+git pull
+git lfs pull
+```
+
+
+## Create SQL schema
+
+Run sql statements inside `open-school-map` root directory to create schema.
+
+```
+sudo -i -Hu postgres psql -U postgres -h localhost -d postgres -p 5432 < data/schulatlas_schema.sql
+```
+
+
+## Import inventory
+
+Required when you want to fetch data via API or want to update dataset. When running the python scripts. Make sure you replace the arguments with your arguments.
+
+```
+cd tools
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python convert_dataset.py ../data/schulen_flensburg.csv
+python insert_facility.py ../data/schulen_flensburg.geojson
+python update_districts.py
+python merge_districts.py ../data/schulen_flensburg.geojson
+python generate_sitemap.py ../data/schulen_flensburg.geojson ../static/sitemap.xml https://schulen-in-flensburg.de/
+deactivate
+```
+
+
 ## Todos
 
 - Geometrien der Spiel- und Pausenflächen von OpenStreetMap extrahieren
