@@ -9,7 +9,23 @@ import schools from 'url:../data/schulen_flensburg.geojson'
 import districts from 'url:../data/flensburg_stadtteile.geojson'
 
 import markerDefault from 'url:../static/marker-icon-default.webp'
-import markerActive from 'url:../static/marker-icon-active.webp'
+import markerSelected from 'url:../static/marker-icon-active.webp'
+
+
+const defaultIcon = L.icon({
+  iconUrl: markerDefault,
+  iconSize: [30, 36],
+  iconAnchor: [15, 36],
+  tooltipAnchor: [0, -37]
+})
+
+
+const selectedIcon = L.icon({
+  iconUrl: markerSelected,
+  iconSize: [30, 36],
+  iconAnchor: [15, 36],
+  tooltipAnchor: [0, -37]
+})
 
 
 let dataObject = null
@@ -29,20 +45,17 @@ fetch(schools, {
 
 fetch(districts, {
   method: 'GET'
+}).then((response) => response.json()).then((data) => {
+  addDistrictsLayer(data)
+}).catch(function (error) {
+  console.log(error)
 })
-  .then((response) => response.json())
-  .then((data) => {
-    addDistrictsLayer(data)
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
 
 
 const layerStyle = {
   standard: {
     color: '#fff',
-    fillColor: '#b0a944',
+    fillColor: '#6ed0ef',
     fillOpacity: 0.4,
     opacity: 0.6,
     weight: 3
@@ -52,22 +65,12 @@ const layerStyle = {
 
 const map = L.map('map').setView([54.7836, 9.4321], 13)
 
-/* L.tileLayer.wms('https://sgx.geodatenzentrum.de/wms_basemapde?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities', {
-  layers: 'de_basemapde_web_raster_farbe',
-  maxZoom: 19,
-  attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
-}).addTo(map) */
-
-/* L.tileLayer('https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/de_basemapde_web_raster_farbe/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png', {
-    maxZoom: 19,
-    attribution: '<a href="https://www.bkg.bund.de">© GeoBasis-DE / BKG (2024)</a> | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>'
-}).addTo(map) */
-
 L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
   maxZoom: 18,
   tileSize: 256,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map)
+
 
 let geocoder = L.Control.Geocoder.nominatim()
 let previousSelectedMarker = null
@@ -264,22 +267,6 @@ function renderFeatureDetails(feature) {
   document.querySelector('title').innerHTML = facility
   document.querySelector('meta[property="og:title"]').setAttribute('content', facility)
 }
-
-
-const defaultIcon = L.icon({
-  iconUrl: markerDefault,
-  iconSize: [30, 36],
-  iconAnchor: [15, 36],
-  tooltipAnchor: [0, -37]
-})
-
-
-const selectedIcon = L.icon({
-  iconUrl: markerActive,
-  iconSize: [30, 36],
-  iconAnchor: [15, 36],
-  tooltipAnchor: [0, -37]
-})
 
 
 function formatAmountOfFacilities(amountOfFacilities) {
