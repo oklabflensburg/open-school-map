@@ -11,6 +11,12 @@ import districts from 'url:../data/flensburg_stadtteile.geojson'
 import markerDefault from 'url:../static/marker-icon-default.webp'
 import markerSelected from 'url:../static/marker-icon-active.webp'
 
+import { Env } from './env.js'
+
+
+const env = new Env()
+env.injectLinkContent('.contact-mail', 'mailto:', '', env.contactMail, 'E-Mail')
+
 
 const defaultIcon = L.icon({
   iconUrl: markerDefault,
@@ -28,19 +34,13 @@ const selectedIcon = L.icon({
 })
 
 
-let dataObject = null
-let cluster = null
-
 fetch(schools, {
   method: 'GET'
+}).then((response) => response.json()).then((data) => {
+  renderPromise(data, 0)
+}).catch(function (error) {
+  console.log(error)
 })
-  .then((response) => response.json())
-  .then((data) => {
-    renderPromise(data, 0)
-  })
-  .catch(function (error) {
-    console.log(error)
-  })
 
 
 fetch(districts, {
@@ -75,6 +75,8 @@ L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
 let geocoder = L.Control.Geocoder.nominatim()
 let previousSelectedMarker = null
 let slugUrlActive = null
+let dataObject = null
+let cluster = null
 
 
 if (typeof URLSearchParams !== 'undefined' && location.search) {
