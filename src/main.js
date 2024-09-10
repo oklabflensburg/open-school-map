@@ -63,7 +63,7 @@ const layerStyle = {
 
 const map = L.map('map').setView([54.7836, 9.4321], 13)
 
-L.tileLayer('https://tiles.oklabflensburg.de/{z}/{x}/{y}.png', {
+L.tileLayer('https://tiles.oklabflensburg.de/osm/{z}/{x}/{y}.png', {
   maxZoom: 20,
   tileSize: 256,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
