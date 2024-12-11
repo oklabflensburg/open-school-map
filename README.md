@@ -64,6 +64,7 @@ git clone https://github.com/oklabflensburg/open-school-map.git
 Create a dot `.env` file inside root directory. Make sure to add the following content repaced by your own values
 
 ```
+API_URL=https://api.oklabflensburg.de
 BASE_URL=http://localhost
 
 CONTACT_MAIL=mail@example.com
@@ -125,3 +126,19 @@ deactivate
 - Geometrien der Spiel- und Pausenflächen von OpenStreetMap extrahieren
 - Anzahl der ausgefallenen Schulstunden pro Schuljahr und Jahrgang anfragen
 - Anzahl der Lehrkräfte und Angestellten pro Schule und Schuljahr anfragen
+
+
+---
+
+
+## How to Contribute
+
+Contributions are welcome! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) guide for details on how to get involved.
+
+
+---
+
+
+## License
+
+This repository is licensed under [CC0-1.0](LICENSE).
