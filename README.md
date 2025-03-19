@@ -99,7 +99,8 @@ git lfs pull
 Run sql statements inside `open-school-map` root directory to create schema.
 
 ```
-sudo -i -Hu postgres psql -U postgres -h localhost -d postgres -p 5432 < data/schulatlas_schema.sql
+psql -U oklab -h localhost -d oklab -p 5432 < data/schulatlas_schema.sql
+psql -U oklab -h localhost -d oklab -p 5432 < data/sh_school_schema.sql 
 ```
 
 
@@ -112,6 +113,7 @@ cd tools
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
+python3 insert_school_csv.py --env ../.env --src ../data/schulen_schleswig_holstein.csv --verbose
 python convert_dataset.py ../data/schulen_flensburg.csv
 python insert_facility.py ../data/schulen_flensburg.geojson
 python update_districts.py

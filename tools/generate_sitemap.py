@@ -1,6 +1,5 @@
 #!./venv/bin/python
 
-import re
 import click
 import json
 

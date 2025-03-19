@@ -1,6 +1,5 @@
 #!./venv/bin/python
 
-import os
 import csv
 import click
 import json
