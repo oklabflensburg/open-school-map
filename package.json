@@ -1,5 +1,6 @@
 {
-  "name": "bildungsatlas-flensburg",
+  "name": "schulkarte-schleswig-holstein",
+  "version": "1.0.0",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "staticFiles": {

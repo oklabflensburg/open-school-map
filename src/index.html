@@ -1,70 +1,122 @@
 <!DOCTYPE html>
-<html prefix="og:https://ogp.me/ns#" lang="de">
+<html prefix="og: https://ogp.me/ns#" lang="de">
+
 <head>
-    <meta charset="utf-8">
-    <title>Bildungsatlas mit Schulen in Flensburg</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:title" content="Bildungsatlas mit Schulen in Flensburg">
-    <meta property="og:site_name" content="Stadtplan und Bildungsatlas mit Schulen in Flensburg">
-    <meta property="og:url" content="https://schulen-flensburg.de">
-    <meta property="og:description" content="Stadtplan und offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten">
-    <meta property="og:type" content="website">
-    <meta content="Stadtplan und offener Bildungsatlas mit Schulen in Flensburg im Bundesland Schleswig-Holstein gibt Aufschluss über Stadtteil und Besonderheiten" name="description">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="stylesheet" href="./main.css">
+  <meta charset="utf-8">
+  <title>Schulkarte für Schleswig-Holstein – Finde Schulen in deiner Nähe</title>
+
+  <!-- Meta Description -->
+  <meta name="description"
+    content="Entdecken Sie alle Schulen in Schleswig-Holstein auf einer interaktiven Karte. Finden Sie Standorte, Kontaktdaten und weitere Details zu den Schulen in Ihrer Umgebung.">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Schulkarte für Schleswig-Holstein – Alle Schulen auf einer interaktiven Karte">
+  <meta property="og:description"
+    content="Mit der Schulkarte für Schleswig-Holstein einfach Schulen in Ihrer Nähe finden. Standort, Kontaktdaten und weitere Informationen auf einen Blick.">
+  <meta property="og:url" content="https://schulkarte.oklabflensburg.de">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Schulkarte für Schleswig-Holstein – Schulen in deiner Nähe finden">
+  <meta name="twitter:description"
+    content="Finde schnell und einfach Schulen in Schleswig-Holstein mit unserer interaktiven Karte.">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="./main.css">
 </head>
-<body>
-    <div class="h-screen overflow-auto bg-slate-50">
-        <div class="md:flex">
-            <div class="w-full sm:w-8/12 md:w-7/12 lg:w-9/12 h-96 overflow-hidden" id="map"></div>
-            <div class="w-full sm:w-4/12 md:w-5/12 lg:w-3/12 sm:overflow-scroll" id="filter">
-                <div class="py-2 px-3 mb-4 lg:mb-8">
-                    <h1 class="tracking-normal leading-normal font-bold text-2xl md:text-3xl lg:text-4xl mb-1">Schulen in Flensburg</h1>
-                    <h2><a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Bildungsatlas Flensburg">Regionaler Bildungsatlas</a></h2>
-                </div>
-                <div class="hidden leading-normal text-md lg:text-lg bg-white border border-slate-300 rounded text-black mb-3 lg:mb-6 mx-3 p-3" id="details">
-                    <ul id="detailList"></ul>
-                </div>
-                <form id="form" enctype="application/x-www-form-urlencoded">
-                    <div class="p-3">
-                        <label class="font-bold text-lg lg:text-xl block mb-2" for="district">
-                            Stadtteil auswählen
-                        </label>
-                        <select class="w-full appearance-none bg-white border text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer py-2 px-3 mb-1" id="district" name="district">
-                            <option value="0">Alle Stadtteile</option>
-                            <option value="1">Altstadt</option>
-                            <option value="2">Neustadt</option>
-                            <option value="3">Nordstadt</option>
-                            <option value="4">Westliche Höhe</option>
-                            <option value="5">Friesischer Berg</option>
-                            <option value="6">Weiche</option>
-                            <option value="7">Südstadt</option>
-                            <option value="8">Sandberg</option>
-                            <option value="9">Jürgensby</option>
-                            <option value="10">Fruerlund</option>
-                            <option value="11">Mürwik</option>
-                            <option value="12">Engelsby</option>
-                            <option value="13">Tarup</option>
-                        </select>
-                        <div class="text-gray-600 text-sm" id="amountFacilities"></div>
-                    </div>
-                </form>
-                <div class="mt-3 md:mt-6 py-2 px-3" id="about">
-                   <h3 class="font-bold text-xl md:text-2xl mb-1">Hintergrund</h3>
-                    <p class="font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Die Idee, einen offenen Bildungsatlas für Flensburg zu entwickeln, ist aus der eigenen Suche nach einer Grundschule für den Lütten entstanden. Auf der <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.flensburg.de/Leben-Soziales/Kinderbetreuung-Schulen/Grundschulen" target="_blank">städtischen Website</a> finden sich zwar Kontaktdetails zu Schulen, jedoch weder eine übersichtliche, vergleichbare Information zu den einzelnen Schulen noch eine Karte, um den möglichen Schulweg zum Wohnort einzuschätzen. Mit dieser Webseite zeigen wir die Umsetzbarkeit eines solchen Systems. Falls Sie Anregungen, Kritik oder Ergänzungen haben, schreiben Sie uns bitte eine <a class="contact-mail text-blue-600 hover:text-blue-400 focus:text-blue-400" href=""></a>.</p>
-                    <h3 class="font-bold text-xl md:text-2xl mb-1">Datenquelle</h3>
-                    <p class="font-normal leading-normal text-md lg:text-lg mb-3 md:mb-6">Ein wesentlicher Teil der Informationen stammt von den verlinkten Seiten, wie beispielsweise zur Schulform, dem Schulleiter, dem Träger und der Anschrift. Zusätzlich haben wir Daten aus dem <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_A_22-23.pdf" target="_blank">Verzeichnis der allgemeinbildenden Schulen in Schleswig-Holstein</a> genutzt und in bestimmten Fällen auf Informationen aus dem <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://www.statistik-nord.de/fileadmin/Dokumente/Verzeichnisse/Schulverzeichnis_B_22-23.pdf" target="_blank">Verzeichnis der berufsbildenden Schulen in Schleswig-Holstein</a> zurückgegriffen. Die Kartendarstellung wurde von engagierten Eltern und ehrenamtlichen Mitgliedern des <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://oklabflensburg.de" target="_blank">OK Lab Flensburgs</a> entwickelt.</p>
-                    <h3 class="font-bold text-xl md:text-2xl mb-1">Quellcode</h3>
-                    <p class="font-normal leading-normal text-md lg:text-lg">Der aktuelle Entwicklungsstand ist auf <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" href="https://github.com/oklabflensburg/open-school-map" target="_blank">GitHub</a> einsehbar und kann von jeder Kommune, Stadt oder Kreis kostenfrei und lizenzfrei genutzt sowie neu bereitgestellt werden.</p>
-                </div>
-            </div>
-        </div>
-        <footer class="bg-gray-200 h-[4vh] border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
-            <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./lizenz.html">Lizenz</a>
-        </footer>
+
+<body class="relative flex justify-center flex-col h-dvh w-full">
+  <div class="relative sm:flex sm:flex-row w-full h-dvh overflow-hidden">
+    <div class="h-dvh flex flex-col w-full xs:w-5/12 sm:w-6/12 md:w-7/12 lg:w-8/12 xl:w-9/12">
+      <div id="map" class="h-[95dvh] w-full"></div>
+      <footer
+        class="grow w-full bg-gray-200 border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
+        <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800"
+          href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a
+          class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800"
+          href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span
+          class="inline-block text-gray-700 px-3">|</span> <a
+          class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./lizenz.html">Lizenz</a>
+      </footer>
     </div>
 
-    <script type="module" src="./main.js"></script>
+    <div id="sidebar"
+      class="absolute left-0 bottom-0 max-h-[45dvh] sm:max-h-dvh sm:block sm:relative w-full xs:w-7/12 sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 overflow-scroll bg-gray-100 z-1200">
+      <div id="sidebarCloseWrapper" class="absolute right-3 top-3 z-1300 sm:hidden">
+        <a id="sidebarCloseButton"
+          class="flex justify-center items-center relative inline-block shadow-md bg-gray-200 text-sky-900 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 rounded-full w-8 h-8 cursor-pointer font-bold"
+          role="button">
+          <svg class="h-5 w-5 inline" viewBox="0 0 50 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            stroke-width="0">
+            <path
+              d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z" />
+          </svg>
+        </a>
+      </div>
+
+      <div id="sidebarHeader" class="py-2 px-3 mb-4 lg:mb-6">
+        <a href="/">
+          <h1 class="tracking-normal leading-normal font-bold text-2xl md:text-3xl lg:text-4xl mb-1">Schulen in
+            Schleswig-Holstein <span class="text-sm font-normal text-gray-500"> (Beta)</span></h1>
+        </a>
+      </div>
+
+      <div class="my-3 px-3" id="about">
+        <form id="geoLocation" enctype="application/x-www-form-urlencoded">
+          <div class="mx-3 mb-8">
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="myLocation" value="true" class="sr-only peer">
+              <div
+                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+              </div>
+              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Meinen Standort verwenden</span>
+            </label>
+          </div>
+        </form>
+
+        <h3 class="font-bold text-lg md:text-xl mb-1">Wie funktioniert die Schulkarte?</h3>
+        <p class="font-normal leading-normal lg:text-md mb-3 md:mb-6">Klicken Sie auf einen Marker, um Details
+          zur jeweiligen Schule anzuzeigen. Bewegen Sie die Karte, um weitere Schulen zu entdecken – die Daten werden
+          dabei automatisch geladen.</p>
+        <h3 class="font-bold text-lg md:text-xl mb-1">Wie entstand die Schulkarte?</h3>
+        <p class="font-normal leading-normal lg:text-md mb-3 md:mb-6">Viele Eltern kennen die Herausforderung,
+          die passende Schule für ihr Kind zu finden. Aus diesem Wunsch heraus haben wir die Schulkarte entwickelt: eine
+          interaktive Übersicht der Schulstandorte und Kontaktdaten in Schleswig-Holstein.
+          Unser Ziel ist es, die Suche nach einer geeigneten Schule zu erleichtern. Haben Sie Ergänzungen oder Feedback?
+          Schreiben Sie uns gerne eine <a class="contact-mail text-blue-600 hover:text-blue-400 focus:text-blue-400"
+            href="" target="_blank"></a>.</p>
+        <h3 class="font-bold text-lg md:text-xl mb-1">Wie aktuell sind die Daten?</h3>
+        <p class="font-normal leading-normal lg:text-md mb-3 md:mb-6">
+          Unsere Karte basiert auf dem Datensatz <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400"
+            href="https://opendata.schleswig-holstein.de/collection/schulen" target="_blank">Schulen in
+            Schleswig-Holstein</a>
+          aus dem Open Data Portal Schleswig-Holstein und wird jährlich aktualisiert.</p>
+        <h3 class="font-bold text-lg md:text-xl mb-1">Open Source und frei nutzbar</h3>
+        <p class="font-normal leading-normal lg:text-md">Der aktuelle Entwicklungsstand ist auf <a
+            class="text-blue-600 hover:text-blue-400 focus:text-blue-400"
+            href="https://github.com/oklabflensburg/open-monuments-map" target="_blank">GitHub</a> einsehbar. Die
+          Software kann von Städten, Kommunen und Ländern kostenfrei und lizenzfrei genutzt und angepasst werden. Die
+          Anwendung wurde von ehrenamtlichen Mitgliedern des OK Lab Flensburg entwickelt.</p>
+      </div>
+
+      <div id="sidebarContent"
+        class="relative bg-white border border-slate-300 leading-normal lg:text-lg m-3 rounded text-black text-md hidden">
+        <style>
+          #detailImage {
+            display: none;
+          }
+
+          #detailImage:has(img.loaded) {
+            display: block;
+          }
+        </style>
+        <div id="detailImage"></div>
+        <ul class="p-3 space-y-3" id="detailList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
 </body>
+
 </html>
