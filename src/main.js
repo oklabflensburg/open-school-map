@@ -103,7 +103,7 @@ function addMonumentsToMap(data, fetchAdditionalMonuments, zoomLevel) {
       })
     },
     pointToLayer(feature, latlng) {
-      return L.marker(latlng, { icon: defaultIcon }).bindTooltip(feature.properties.label, {
+      return L.marker(latlng, { icon: defaultIcon }).bindTooltip(feature.properties.label.split(/, | -/)[0].trim(), {
         permanent: false,
         direction: 'top'
       })
@@ -221,7 +221,7 @@ async function fetchMonumentDetailBySlug(slug) {
         type: 'Feature',
         id: data[0].id,
         geometry: data[0].geojson,
-        properties: { label: data[0].label, slug: data[0].slug }
+        properties: { label: data[0].name.split(/, | -/)[0].trim(), slug: data[0].slug }
       }
     ]
   }
