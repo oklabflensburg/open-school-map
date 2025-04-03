@@ -264,7 +264,7 @@ async function fetchMonumentDetailById(id) {
 function renderMonumentMeta(data) {
   const { slug, street, house_number, zipcode, city, telephone, monument_type, email, name, fax, website } = data
 
-  const title = `${capitalizeEachWord(slug || name || fax)} - Schulkarte für Schleswig-Holstein`
+  const title = `${capitalizeEachWord(slug || name)} - Schulkarte für Schleswig-Holstein`
   document.title = title
   document.querySelector('meta[property="og:title"]').setAttribute('content', title)
   document.querySelector('meta[property="og:url"]').setAttribute('content', `${window.location.href}${slug}`)
