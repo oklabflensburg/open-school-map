@@ -262,7 +262,7 @@ async function fetchMonumentDetailById(id) {
 }
 
 function renderMonumentMeta(data) {
-  const { slug, street, house_number, zipcode, city, telephone, monument_type, email, name, fax, website } = data
+  const { slug, street, house_number, zipcode, city, telephone, school_types, email, name, fax, website } = data
 
   const title = `${capitalizeEachWord(slug || name)} - Schulkarte für Schleswig-Holstein`
   document.title = title
@@ -276,7 +276,7 @@ function renderMonumentMeta(data) {
     <li class="last-of-type:pb-2 py-1 mb-3">${street} ${house_number}<br>${zipcode} ${city}</li>`
 
   if (email) {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>E-Mail</strong><br>${email}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>E-Mail</strong><br><a href="mailto:${email}">${email}</a></li>`
   }
 
   if (website) {
@@ -289,6 +289,17 @@ function renderMonumentMeta(data) {
 
   if (fax) {
     detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Fax</strong><br>${fax}</li>`
+  }
+
+  if (school_types.length > 0) {
+    const schoolTypeTitle = school_types.length === 1 ? 'Schulart' : 'Schularten'
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>${schoolTypeTitle}</strong><br><ul>`
+
+    school_types.forEach((schoolType) => {
+      detailOutput += `<li>${schoolType}</li>`
+    })
+
+    detailOutput += '</ul></li>'
   }
 
   document.querySelector('#detailList').innerHTML = detailOutput
