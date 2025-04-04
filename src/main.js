@@ -261,6 +261,74 @@ async function fetchMonumentDetailById(id) {
   renderMonumentMeta(data[0])
 }
 
+async function fetchSchoolTypes() {
+  const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/types`
+  try {
+    const data = await fetchJsonData(url)
+    if (data && Array.isArray(data)) {
+      console.log('School types:', data)
+
+      return data
+    }
+    console.warn('Unexpected response format for school types:', data)
+    return []
+  }
+  catch (error) {
+    console.error('Error fetching school types:', error)
+    return []
+  }
+}
+
+async function fetchSchoolsByType(schoolType) {
+  const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/type?school_type=${schoolType}`;
+  const data = await fetchJsonData(url);
+
+  if (data) {
+    addMonumentsToMap(data, addMonumentsByBounds, zoomLevelInitial);
+  } else {
+    console.warn('No data returned for the selected school type.');
+  }
+}
+
+async function createSchoolTypeSelect() {
+  const schoolTypes = await fetchSchoolTypes();
+  const container = document.querySelector('#schoolTypes');
+
+  if (!container) {
+    console.error('Element #schoolTypeContainer not found');
+    return;
+  }
+
+  const select = document.createElement('select');
+  select.id = 'schoolType';
+  select.name = 'schoolType';
+  select.classList.add('p-2.5', 'w-full', 'mb-4', 'text-sm', 'border-gray-300', 'rounded-md', 'bg-white', 'focus:ring-indigo-500', 'focus:border-indigo-500');
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'Alle Schularten';
+  select.appendChild(defaultOption);
+
+  schoolTypes.forEach((type) => {
+    const option = document.createElement('option');
+    option.value = type.code;
+    option.textContent = type.name;
+    select.appendChild(option);
+  });
+
+  container.innerHTML = '';
+  container.appendChild(select);
+
+  select.addEventListener('change', (event) => {
+    const selectedType = event.target.value;
+    if (selectedType && selectedType !== '') {
+      fetchSchoolsByType(selectedType);
+    } else {
+      fetchMonumentPointsByBounds();
+    }
+  });
+}
+
 function renderMonumentMeta(data) {
   const { slug, street, house_number, zipcode, city, telephone, school_types, email, name, fax, website } = data
 
@@ -390,6 +458,8 @@ window.onload = async () => {
       map.setView([lat, lng], zoomLevelDetail)
     }
   }
+
+  await createSchoolTypeSelect()
 }
 
 window.addEventListener('popstate', (event) => {
