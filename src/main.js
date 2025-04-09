@@ -123,7 +123,9 @@ function handleWindowSize() {
 
   // Handle sidebar responsive behavior
   const sidebar = document.querySelector('#sidebar')
-  if (!sidebar) return
+  if (!sidebar) {
+    return
+  }
 
   // Adjust map padding to accommodate the control panel
   map.invalidateSize()
@@ -135,7 +137,8 @@ function handleWindowSize() {
       // Mobile position (bottom of screen)
       mapControls.style.top = 'auto'
       mapControls.style.bottom = '70px'  // Position above the mobile bottom bar
-    } else {
+    }
+    else {
       // Desktop position (top of screen)
       mapControls.style.bottom = 'auto'
       mapControls.style.top = '10px'
@@ -148,12 +151,20 @@ function handleWindowSize() {
       sidebar.classList.add('bottom-sheet', 'active')
       sidebar.classList.remove('absolute')
     }
-  } else {
+  }
+  else if (sidebar.classList.contains('bottom-sheet')) {
     // If desktop and sidebar is showing as bottom sheet
-    if (sidebar.classList.contains('bottom-sheet')) {
-      sidebar.classList.remove('bottom-sheet', 'active')
-      sidebar.classList.add('absolute')
-    }
+    sidebar.classList.remove('bottom-sheet')
+    sidebar.classList.add('absolute')
+  }
+
+  // Reset map position when switching from mobile to desktop
+  if (innerWidth >= 640) {
+    adjustMapForBottomSheet(false)
+  }
+  else if (sidebar.classList.contains('active')) {
+    // Re-apply adjustment if we're in mobile and sidebar is open
+    adjustMapForBottomSheet(true)
   }
 }
 
@@ -315,7 +326,8 @@ async function fetchSchoolsByType(schoolType) {
 
   if (data) {
     addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
-  } else {
+  }
+  else {
     cleanSchoolMeta()
     if (currentLayer) {
       currentLayer.clearLayers()
@@ -340,7 +352,7 @@ async function createSchoolTypeSelect() {
   const select = document.createElement('select')
   select.id = 'schoolType'
   select.name = 'schoolType'
-  select.classList.add('p-1', 'sm:p-2', 'w-full', 'text-xs', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'bg-white', 'focus:ring-indigo-500', 'focus:border-indigo-500')
+  select.classList.add('p-1', 'sm:p-2', 'w-full', 'text-xs', 'sm:text-sm', 'border', 'border-gray-300', 'rounded-md', 'bg-white', 'focus:ring-indigo-500', 'focus:border-indigo-500')
 
   const defaultOption = document.createElement('option')
   defaultOption.value = ''
@@ -362,7 +374,8 @@ async function createSchoolTypeSelect() {
     const selectedType = event.target.value
     if (selectedType && selectedType !== '') {
       fetchSchoolsByType(selectedType)
-    } else {
+    }
+    else {
       fetchSchoolPointsByBounds()
     }
   })
@@ -418,7 +431,11 @@ function renderSchoolMeta(data) {
     sidebar.classList.remove('hidden')
     sidebar.classList.add('bottom-sheet', 'active')
     sidebar.classList.remove('absolute')
-  } else {
+
+    // Adjust map position for bottom sheet
+    adjustMapForBottomSheet(true)
+  }
+  else {
     sidebar.classList.remove('hidden')
     sidebar.classList.add('absolute')
     sidebar.classList.remove('bottom-sheet', 'active')
@@ -443,13 +460,17 @@ function cleanSchoolMeta() {
   const sidebar = document.querySelector('#sidebar')
   if (window.innerWidth < 640 && sidebar.classList.contains('bottom-sheet')) {
     sidebar.classList.remove('active')
+    // Reset map position
+    adjustMapForBottomSheet(false)
+
     // Add a short delay before hiding to allow animation to complete
     setTimeout(() => {
       if (!sidebar.classList.contains('active')) {
         sidebar.classList.add('hidden')
       }
     }, 300)
-  } else {
+  }
+  else {
     sidebar.classList.add('hidden')
     sidebar.classList.remove('absolute')
   }
@@ -471,6 +492,39 @@ function updateScreen(screen) {
   document.querySelector('meta[property="og:title"]').setAttribute('content', document.title)
 }
 
+function adjustMapForBottomSheet(isOpen = true) {
+  const mapContainer = document.querySelector('#map')
+  const sidebar = document.querySelector('#sidebar')
+
+  if (!mapContainer || !sidebar) {
+    return
+  }
+
+  if (isOpen && window.innerWidth < 640 && sidebar.classList.contains('bottom-sheet')) {
+    // Calculate visible bottom sheet height (could be partial or full based on design)
+    const bottomSheetHeight = sidebar.offsetHeight * 0.7 // Using 70% as default, adjust as needed
+
+    // Translate the map up
+    mapContainer.style.transition = 'transform 0.3s ease'
+    mapContainer.style.transform = `translateY(-${bottomSheetHeight}px)`
+
+    // Also invalidate map size after transformation
+    setTimeout(() => {
+      map.invalidateSize()
+    }, 300)
+  }
+  else {
+    // Reset map position
+    mapContainer.style.transition = 'transform 0.3s ease'
+    mapContainer.style.transform = 'translateY(0)'
+
+    // Invalidate map size after reset
+    setTimeout(() => {
+      map.invalidateSize()
+    }, 300)
+  }
+}
+
 // Event listeners
 window.onload = async () => {
   L.tileLayer('https://tiles.oklabflensburg.de/sgm/{z}/{x}/{y}.png', {
@@ -478,6 +532,10 @@ window.onload = async () => {
     tileSize: 256,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
   }).addTo(map)
+
+  // Add padding to the map to make room for the controls
+  // Fix race condition by moving this assignment before any async operations
+  map.paddingTopLeft = [0, 60]
 
   map.on('moveend', fetchSchoolPointsByBounds)
   map.on('click', cleanSchoolMeta)
@@ -501,23 +559,29 @@ window.onload = async () => {
         e.preventDefault()
         if (sidebar.classList.contains('bottom-sheet')) {
           sidebar.classList.toggle('active')
+          // Adjust map position when toggling
+          adjustMapForBottomSheet(sidebar.classList.contains('active'))
         }
       })
     }
-  } else {
+  }
+  else {
     sidebarToggle.addEventListener('click', (e) => {
       e.preventDefault()
       const sidebar = document.querySelector('#sidebar')
       if (sidebar.classList.contains('bottom-sheet')) {
         sidebar.classList.toggle('active')
-      } else {
+      }
+      else {
         sidebar.classList.toggle('translate-y-full')
       }
     })
   }
 
   document.getElementById('geoLocation').addEventListener('change', function (event) {
-    if (event.target.name === 'myLocation' && event.target.checked) {
+    const checkbox = event.target
+
+    if (checkbox.name === 'myLocation' && checkbox.checked) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -526,11 +590,32 @@ window.onload = async () => {
           },
           (error) => {
             console.error('Error obtaining geolocation:', error.message)
+            // Reset the checkbox to unchecked when geolocation is denied/fails
+            checkbox.checked = false
+
+            // Show appropriate message to user based on error type
+            if (error.code === error.PERMISSION_DENIED) {
+              alert('Standortfreigabe wurde verweigert. Bitte erlauben Sie den Zugriff auf Ihren Standort in den Browsereinstellungen, um diese Funktion zu nutzen.')
+            }
+            else if (error.code === error.TIMEOUT) {
+              alert('Zeitüberschreitung bei der Standortabfrage. Bitte versuchen Sie es erneut.')
+            }
+            else {
+              alert('Standortbestimmung fehlgeschlagen. Bitte versuchen Sie es später erneut.')
+            }
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
           }
         )
       }
       else {
         console.error('Geolocation is not supported by this browser.')
+        // Reset the checkbox if geolocation is not supported
+        checkbox.checked = false
+        alert('Ihr Browser unterstützt keine Standortbestimmung.')
       }
     }
   })
@@ -556,9 +641,6 @@ window.onload = async () => {
   }
 
   await createSchoolTypeSelect()
-
-  // Add padding to the map to make room for the controls
-  map.paddingTopLeft = [0, 60]
 
   // Initialize window size handling immediately
   handleWindowSize()

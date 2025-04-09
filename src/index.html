@@ -29,21 +29,20 @@
 <body class="relative flex justify-center flex-col h-dvh w-full">
   <div class="relative sm:flex sm:flex-row w-full h-dvh overflow-hidden">
     <div class="h-dvh flex flex-col w-full xs:w-5/12 sm:w-6/12 md:w-7/12 lg:w-8/12 xl:w-9/12">
-      <!-- Map Controls Panel - Always Visible -->
-      <div id="mapControls" class="absolute left-0 right-0 p-2 bg-white bg-opacity-95 shadow-md z-[500]"
+      <div id="mapControls" class="absolute left-0 sm:max-w-96 right-0 p-2 bg-white bg-opacity-95 shadow-md z-[500]"
         style="top: 10px; margin: 0 10px; border-radius: 4px;">
-        <div class="flex flex-col sm:flex-row justify-between gap-2">
-          <div class="w-full sm:w-1/2">
+        <div class="flex flex-col justify-between gap-2">
+          <div class="w-full">
             <form id="schoolTypes" class="mb-2 sm:mb-0"></form>
           </div>
-          <div class="w-full sm:w-1/2">
+          <div class="w-full">
             <form id="geoLocation" enctype="application/x-www-form-urlencoded" class="flex items-center">
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" name="myLocation" value="true" class="sr-only peer">
                 <div
                   class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
                 </div>
-                <span class="ms-3 text-sm font-medium text-gray-900">Meinen Standort verwenden</span>
+                <span class="ms-3 text-sm font-medium text-gray-900">Mein Standort verwenden</span>
               </label>
             </form>
           </div>
