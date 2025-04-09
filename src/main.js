@@ -457,6 +457,9 @@ function cleanSchoolMeta() {
   document.querySelector('#detailList').innerHTML = ''
   document.querySelector('#detailImage').innerHTML = ''
 
+  // Reset URL to home when closing school details
+  navigateTo('home', true)
+
   const sidebar = document.querySelector('#sidebar')
   if (window.innerWidth < 640 && sidebar.classList.contains('bottom-sheet')) {
     sidebar.classList.remove('active')
