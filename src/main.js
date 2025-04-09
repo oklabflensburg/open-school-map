@@ -15,14 +15,14 @@ env.injectLinkContent('.contact-mail', 'mailto:', '', env.contactMail, 'E-Mail')
 const center = [54.79443515, 9.43205485]
 const zoomLevelInitial = 13
 const zoomLevelDetail = 19
-const addMonumentsByBounds = false
+const addSchoolsByBounds = false
 
 const map = L.map('map', { zoomControl: false }).setView(center, zoomLevelInitial)
+
 const markerClusterGroup = L.markerClusterGroup({
   zoomToBoundsOnClick: true,
   disableClusteringAtZoom: 19
 })
-let zoomControl = L.control.zoom({ position: 'bottomright' }).addTo(map)
 
 // Marker icons
 const defaultIcon = L.icon({
@@ -83,8 +83,7 @@ function setSelectedMarker(marker) {
   previousSelectedMarker = marker
 }
 
-// Map-related functions
-function addMonumentsToMap(data, fetchAdditionalMonuments, zoomLevel) {
+function addSchoolsToMap(data, fetchAdditionalSchools, zoomLevel) {
   if (currentLayer) {
     currentLayer.removeLayer(currentLayer)
   }
@@ -97,8 +96,8 @@ function addMonumentsToMap(data, fetchAdditionalMonuments, zoomLevel) {
       const id = feature.id
       markerMap.set(id, layer)
       layer.on('click', async () => {
-        cleanMonumentMeta()
-        await fetchMonumentDetailById(id)
+        cleanSchoolMeta()
+        await fetchSchoolDetailById(id)
         setSelectedMarker(layer)
       })
     },
@@ -121,8 +120,41 @@ function addMonumentsToMap(data, fetchAdditionalMonuments, zoomLevel) {
 
 function handleWindowSize() {
   const innerWidth = window.innerWidth
-  map.removeControl(zoomControl)
-  zoomControl = L.control.zoom({ position: innerWidth >= 1024 ? 'topleft' : 'bottomright' }).addTo(map)
+
+  // Handle sidebar responsive behavior
+  const sidebar = document.querySelector('#sidebar')
+  if (!sidebar) return
+
+  // Adjust map padding to accommodate the control panel
+  map.invalidateSize()
+
+  // Position the map controls appropriately based on screen size
+  const mapControls = document.querySelector('#mapControls')
+  if (mapControls) {
+    if (innerWidth < 640) {
+      // Mobile position (bottom of screen)
+      mapControls.style.top = 'auto'
+      mapControls.style.bottom = '70px'  // Position above the mobile bottom bar
+    } else {
+      // Desktop position (top of screen)
+      mapControls.style.bottom = 'auto'
+      mapControls.style.top = '10px'
+    }
+  }
+
+  if (innerWidth < 640) {
+    // If mobile and sidebar is showing
+    if (!sidebar.classList.contains('hidden') && !sidebar.classList.contains('bottom-sheet')) {
+      sidebar.classList.add('bottom-sheet', 'active')
+      sidebar.classList.remove('absolute')
+    }
+  } else {
+    // If desktop and sidebar is showing as bottom sheet
+    if (sidebar.classList.contains('bottom-sheet')) {
+      sidebar.classList.remove('bottom-sheet', 'active')
+      sidebar.classList.add('absolute')
+    }
+  }
 }
 
 // Fetch functions
@@ -140,7 +172,7 @@ async function fetchJsonData(url) {
   }
 }
 
-function fetchBlob(url, monumentFunction) {
+function fetchBlob(url, SchoolFunction) {
   if (!url || typeof url !== 'string') {
     return
   }
@@ -155,7 +187,7 @@ function fetchBlob(url, monumentFunction) {
     imageElement.classList.add('loaded')
   }
 
-  imageElement.setAttribute('alt', monumentFunction || 'Schulkarte für Schleswig-Holstein')
+  imageElement.setAttribute('alt', SchoolFunction || 'Schulkarte für Schleswig-Holstein')
 
   const divElement = document.createElement('div')
   divElement.classList.add('px-3', 'py-2', 'w-full', 'text-xs', 'text-gray-100', 'bg-gray-600')
@@ -170,7 +202,7 @@ function fetchBlob(url, monumentFunction) {
   container.appendChild(divElement)
 }
 
-async function fetchMonumentPointsByBounds() {
+async function fetchSchoolPointsByBounds() {
   const bounds = map.getBounds()
   const bbox = {
     xmin: bounds.getWest(),
@@ -181,7 +213,7 @@ async function fetchMonumentPointsByBounds() {
 
   const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/bounds?xmin=${bbox.xmin}&ymin=${bbox.ymin}&xmax=${bbox.xmax}&ymax=${bbox.ymax}`
   const data = await fetchJsonData(url)
-  addMonumentsToMap(data, addMonumentsByBounds, zoomLevelInitial)
+  addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
 
   if (previousSelectedMarker) {
     const previousMarkerId = previousSelectedMarker.feature.id
@@ -192,10 +224,10 @@ async function fetchMonumentPointsByBounds() {
   }
 }
 
-async function fetchMonumentPointsByPosition(lat, lng) {
+async function fetchSchoolPointsByPosition(lat, lng) {
   const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/radius?lat=${lat}&lng=${lng}`
   const data = await fetchJsonData(url)
-  addMonumentsToMap(data, addMonumentsByBounds, zoomLevelInitial)
+  addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
 
   if (previousSelectedMarker) {
     const previousMarkerId = previousSelectedMarker.feature.id
@@ -206,7 +238,7 @@ async function fetchMonumentPointsByPosition(lat, lng) {
   }
 }
 
-async function fetchMonumentDetailBySlug(slug) {
+async function fetchSchoolDetailBySlug(slug) {
   const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/details?slug=${slug}`
   const data = await fetchJsonData(url)
 
@@ -231,13 +263,13 @@ async function fetchMonumentDetailBySlug(slug) {
     fetchBlob(data[0].photo_link, data[0].name)
   }
 
-  renderMonumentMeta(data[0])
-  addMonumentsToMap(geoJsonData, true, zoomLevelDetail)
+  renderSchoolMeta(data[0])
+  addSchoolsToMap(geoJsonData, true, zoomLevelDetail)
 
   let matchingMarker = findMarkerById(data[0].id)
   if (!matchingMarker) {
     console.warn('No matching marker found. Loading additional markers...')
-    await fetchMonumentPointsByBounds()
+    await fetchSchoolPointsByBounds()
     matchingMarker = findMarkerById(data[0].id)
   }
   if (matchingMarker) {
@@ -245,7 +277,7 @@ async function fetchMonumentDetailBySlug(slug) {
   }
 }
 
-async function fetchMonumentDetailById(id) {
+async function fetchSchoolDetailById(id) {
   const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/details?school_id=${id}`
   const data = await fetchJsonData(url)
 
@@ -258,7 +290,7 @@ async function fetchMonumentDetailById(id) {
   }
 
   navigateTo(data[0].slug)
-  renderMonumentMeta(data[0])
+  renderSchoolMeta(data[0])
 }
 
 async function fetchSchoolTypes() {
@@ -266,8 +298,6 @@ async function fetchSchoolTypes() {
   try {
     const data = await fetchJsonData(url)
     if (data && Array.isArray(data)) {
-      console.log('School types:', data)
-
       return data
     }
     console.warn('Unexpected response format for school types:', data)
@@ -280,56 +310,65 @@ async function fetchSchoolTypes() {
 }
 
 async function fetchSchoolsByType(schoolType) {
-  const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/type?school_type=${schoolType}`;
-  const data = await fetchJsonData(url);
+  const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/type?school_type=${schoolType}`
+  const data = await fetchJsonData(url)
 
   if (data) {
-    addMonumentsToMap(data, addMonumentsByBounds, zoomLevelInitial);
+    addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
   } else {
-    console.warn('No data returned for the selected school type.');
+    cleanSchoolMeta()
+    if (currentLayer) {
+      currentLayer.clearLayers()
+    }
   }
 }
 
 async function createSchoolTypeSelect() {
-  const schoolTypes = await fetchSchoolTypes();
-  const container = document.querySelector('#schoolTypes');
+  const schoolTypes = await fetchSchoolTypes()
+  const container = document.querySelector('#schoolTypes')
 
   if (!container) {
-    console.error('Element #schoolTypeContainer not found');
-    return;
+    return
   }
 
-  const select = document.createElement('select');
-  select.id = 'schoolType';
-  select.name = 'schoolType';
-  select.classList.add('p-2.5', 'w-full', 'mb-4', 'text-sm', 'border-gray-300', 'rounded-md', 'bg-white', 'focus:ring-indigo-500', 'focus:border-indigo-500');
+  // Create label for the select element
+  const label = document.createElement('label')
+  label.htmlFor = 'schoolType'
+  label.textContent = 'Schulart filtern:'
+  label.classList.add('block', 'text-xs', 'sm:text-sm', 'font-medium', 'text-gray-700', 'mb-1')
 
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.textContent = 'Alle Schularten';
-  select.appendChild(defaultOption);
+  const select = document.createElement('select')
+  select.id = 'schoolType'
+  select.name = 'schoolType'
+  select.classList.add('p-1', 'sm:p-2', 'w-full', 'text-xs', 'sm:text-sm', 'border-gray-300', 'rounded-md', 'bg-white', 'focus:ring-indigo-500', 'focus:border-indigo-500')
+
+  const defaultOption = document.createElement('option')
+  defaultOption.value = ''
+  defaultOption.textContent = 'Alle Schularten'
+  select.appendChild(defaultOption)
 
   schoolTypes.forEach((type) => {
-    const option = document.createElement('option');
-    option.value = type.code;
-    option.textContent = type.name;
-    select.appendChild(option);
-  });
+    const option = document.createElement('option')
+    option.value = type.code
+    option.textContent = type.name
+    select.appendChild(option)
+  })
 
-  container.innerHTML = '';
-  container.appendChild(select);
+  container.innerHTML = ''
+  container.appendChild(label)
+  container.appendChild(select)
 
   select.addEventListener('change', (event) => {
-    const selectedType = event.target.value;
+    const selectedType = event.target.value
     if (selectedType && selectedType !== '') {
-      fetchSchoolsByType(selectedType);
+      fetchSchoolsByType(selectedType)
     } else {
-      fetchMonumentPointsByBounds();
+      fetchSchoolPointsByBounds()
     }
-  });
+  })
 }
 
-function renderMonumentMeta(data) {
+function renderSchoolMeta(data) {
   const { slug, street, house_number, zipcode, city, telephone, school_types, email, name, fax, website } = data
 
   const title = `${capitalizeEachWord(slug || name)} - Schulkarte für Schleswig-Holstein`
@@ -344,11 +383,11 @@ function renderMonumentMeta(data) {
     <li class="last-of-type:pb-2 py-1 mb-3">${street} ${house_number}<br>${zipcode} ${city}</li>`
 
   if (email) {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>E-Mail</strong><br><a href="mailto:${email}">${email}</a></li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>E-Mail</strong><br><a href="mailto:${email}" target="_blank">${email}</a></li>`
   }
 
   if (website) {
-    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Website</strong><br>${website}</li>`
+    detailOutput += `<li class="last-of-type:pb-2 pt-2"><strong>Website</strong><br><a href="${website}" target="_blank">${website}</a></li>`
   }
 
   if (telephone) {
@@ -372,16 +411,49 @@ function renderMonumentMeta(data) {
 
   document.querySelector('#detailList').innerHTML = detailOutput
   document.querySelector('#about').classList.add('hidden')
-  document.querySelector('#sidebar').classList.add('absolute')
-  document.querySelector('#sidebar').classList.remove('hidden')
+
+  const sidebar = document.querySelector('#sidebar')
+  // Check if we're in mobile view (less than 640px)
+  if (window.innerWidth < 640) {
+    sidebar.classList.remove('hidden')
+    sidebar.classList.add('bottom-sheet', 'active')
+    sidebar.classList.remove('absolute')
+  } else {
+    sidebar.classList.remove('hidden')
+    sidebar.classList.add('absolute')
+    sidebar.classList.remove('bottom-sheet', 'active')
+  }
+
   document.querySelector('#sidebarContent').classList.remove('hidden')
+
+  if (sidebar) {
+    sidebar.scrollTop = 0
+  }
 }
 
-function cleanMonumentMeta() {
+function cleanSchoolMeta() {
+  if (previousSelectedMarker) {
+    previousSelectedMarker.setIcon(defaultIcon)
+    previousSelectedMarker = null
+  }
+
   document.querySelector('#detailList').innerHTML = ''
   document.querySelector('#detailImage').innerHTML = ''
-  document.querySelector('#sidebar').classList.add('hidden')
-  document.querySelector('#sidebar').classList.remove('absolute')
+
+  const sidebar = document.querySelector('#sidebar')
+  if (window.innerWidth < 640 && sidebar.classList.contains('bottom-sheet')) {
+    sidebar.classList.remove('active')
+    // Add a short delay before hiding to allow animation to complete
+    setTimeout(() => {
+      if (!sidebar.classList.contains('active')) {
+        sidebar.classList.add('hidden')
+      }
+    }, 300)
+  } else {
+    sidebar.classList.add('hidden')
+    sidebar.classList.remove('absolute')
+  }
+
   document.querySelector('#about').classList.remove('hidden')
   document.querySelector('#sidebarContent').classList.add('hidden')
 }
@@ -407,25 +479,49 @@ window.onload = async () => {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
   }).addTo(map)
 
-  map.on('moveend', fetchMonumentPointsByBounds)
-  map.on('click', cleanMonumentMeta)
+  map.on('moveend', fetchSchoolPointsByBounds)
+  map.on('click', cleanSchoolMeta)
 
   document.querySelector('#sidebarCloseButton')?.addEventListener('click', (e) => {
     e.preventDefault()
-    cleanMonumentMeta()
+    cleanSchoolMeta()
   })
 
-  document.querySelector('#sidebarToggle')?.addEventListener('click', (e) => {
-    e.preventDefault()
-    document.querySelector('#sidebar').classList.toggle('translate-y-full')
-  })
+  // Check if we need to add a sidebar toggle
+  const sidebarToggle = document.querySelector('#sidebarToggle')
+  if (!sidebarToggle) {
+    // If no toggle exists, we'll use the sidebar handle for this on mobile
+    const sidebar = document.querySelector('#sidebar')
+    if (sidebar) {
+      const sidebarHandle = document.createElement('div')
+      sidebarHandle.id = 'sidebar-handle'
+      sidebar.insertBefore(sidebarHandle, sidebar.firstChild)
+
+      sidebarHandle.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (sidebar.classList.contains('bottom-sheet')) {
+          sidebar.classList.toggle('active')
+        }
+      })
+    }
+  } else {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.preventDefault()
+      const sidebar = document.querySelector('#sidebar')
+      if (sidebar.classList.contains('bottom-sheet')) {
+        sidebar.classList.toggle('active')
+      } else {
+        sidebar.classList.toggle('translate-y-full')
+      }
+    })
+  }
 
   document.getElementById('geoLocation').addEventListener('change', function (event) {
     if (event.target.name === 'myLocation' && event.target.checked) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            fetchMonumentPointsByPosition(position.coords.latitude, position.coords.longitude)
+            fetchSchoolPointsByPosition(position.coords.latitude, position.coords.longitude)
             map.setView([position.coords.latitude, position.coords.longitude], 16)
           },
           (error) => {
@@ -449,10 +545,10 @@ window.onload = async () => {
 
   if (screen === 'home') {
     map.setView(center, zoomLevelInitial)
-    fetchMonumentPointsByBounds()
+    fetchSchoolPointsByBounds()
   }
   else {
-    const data = await fetchMonumentDetailBySlug(screen)
+    const data = await fetchSchoolDetailBySlug(screen)
     if (data && data[0] && data[0].geojson && data[0].geojson.coordinates) {
       const [lng, lat] = data[0].geojson.coordinates
       map.setView([lat, lng], zoomLevelDetail)
@@ -460,16 +556,22 @@ window.onload = async () => {
   }
 
   await createSchoolTypeSelect()
+
+  // Add padding to the map to make room for the controls
+  map.paddingTopLeft = [0, 60]
+
+  // Initialize window size handling immediately
+  handleWindowSize()
 }
 
 window.addEventListener('popstate', (event) => {
   const screen = event.state?.screen || 'home'
   if (screen === 'home') {
-    cleanMonumentMeta()
-    fetchMonumentPointsByBounds()
+    cleanSchoolMeta()
+    fetchSchoolPointsByBounds()
   }
   else {
-    fetchMonumentDetailBySlug(screen)
+    fetchSchoolDetailBySlug(screen)
   }
 })
 

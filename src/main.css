@@ -8,7 +8,8 @@
 
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: InterVariable, sans-serif; font-optical-sizing: auto;
+    font-family: InterVariable, sans-serif;
+    font-optical-sizing: auto;
   }
 }
 
@@ -28,7 +29,8 @@
   src: url('../static/fonts/InterVariable-Italic.woff2') format('woff2');
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -98,27 +100,27 @@ html, body {
 }
 
 .marker-cluster-small {
-	background-color: rgb(64 64 65 / 50%);
+  background-color: rgb(64 64 65 / 50%);
 }
 
 .marker-cluster-small div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .marker-cluster-medium {
-	background-color: rgb(64 64 65 / 50%);
+  background-color: rgb(64 64 65 / 50%);
 }
 
 .marker-cluster-medium div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .marker-cluster-large {
-	background-color: rgb(64 64 65 / 50%);
+  background-color: rgb(64 64 65 / 50%);
 }
 
 .marker-cluster-large div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .marker-cluster {
@@ -143,39 +145,97 @@ html, body {
 
 /* IE 6-8 fallback colors */
 .leaflet-oldie .marker-cluster-small {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-oldie .marker-cluster-small div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-oldie .marker-cluster-medium {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-oldie .marker-cluster-medium div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-oldie .marker-cluster-large {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-oldie .marker-cluster-large div {
-	background-color: rgb(64 64 65 / 70%);
+  background-color: rgb(64 64 65 / 70%);
 }
 
-#map {
-  height: 40vh
+.leaflet-left {
+  right: 0;
 }
 
-@media (width >= 768px) {
-  tr > td:first-of-type {
-    padding-right: 15px;
+.leaflet-top {
+  bottom: 0;
+}
+
+/* Bottom sheet transition styles */
+#sidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+#sidebar.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  z-index: 1200;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar.bottom-sheet.active {
+  transform: translateY(0);
+}
+
+#sidebar-handle {
+  display: none;
+  height: 5px;
+  width: 40px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  margin: 8px auto;
+}
+
+#sidebar.bottom-sheet #sidebar-handle {
+  display: block;
+}
+
+@media (width >=640px) {
+  .sm\:container {
+    max-width: 640px;
   }
+}
 
-  #map, #filter {
-    height: 96vh;
+@media (width >=768px) {
+  .sm\:container {
+    max-width: 768px;
+  }
+}
+
+@media (width >=1024px) {
+  .sm\:container {
+    max-width: 1024px;
+  }
+}
+
+@media (width >=1280px) {
+  .sm\:container {
+    max-width: 1280px;
+  }
+}
+
+@media (width >=1536px) {
+  .sm\:container {
+    max-width: 1536px;
   }
 }

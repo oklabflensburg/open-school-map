@@ -29,6 +29,27 @@
 <body class="relative flex justify-center flex-col h-dvh w-full">
   <div class="relative sm:flex sm:flex-row w-full h-dvh overflow-hidden">
     <div class="h-dvh flex flex-col w-full xs:w-5/12 sm:w-6/12 md:w-7/12 lg:w-8/12 xl:w-9/12">
+      <!-- Map Controls Panel - Always Visible -->
+      <div id="mapControls" class="absolute left-0 right-0 p-2 bg-white bg-opacity-95 shadow-md z-[500]"
+        style="top: 10px; margin: 0 10px; border-radius: 4px;">
+        <div class="flex flex-col sm:flex-row justify-between gap-2">
+          <div class="w-full sm:w-1/2">
+            <form id="schoolTypes" class="mb-2 sm:mb-0"></form>
+          </div>
+          <div class="w-full sm:w-1/2">
+            <form id="geoLocation" enctype="application/x-www-form-urlencoded" class="flex items-center">
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" name="myLocation" value="true" class="sr-only peer">
+                <div
+                  class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                </div>
+                <span class="ms-3 text-sm font-medium text-gray-900">Meinen Standort verwenden</span>
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div id="map" class="h-[95dvh] w-full"></div>
       <footer
         class="grow w-full bg-gray-200 border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
@@ -42,7 +63,7 @@
     </div>
 
     <div id="sidebar"
-      class="absolute left-0 bottom-0 max-h-[45dvh] sm:max-h-dvh sm:block sm:relative w-full xs:w-7/12 sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 overflow-scroll bg-gray-100 z-1200">
+      class="absolute left-0 bottom-0 max-h-[56dvh] sm:max-h-dvh sm:block sm:relative w-full xs:w-7/12 sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 overflow-scroll bg-gray-100 z-1200">
       <div id="sidebarCloseWrapper" class="absolute right-3 top-3 z-1300 sm:hidden">
         <a id="sidebarCloseButton"
           class="flex justify-center items-center relative inline-block shadow-md bg-gray-200 text-sky-900 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 rounded-full w-8 h-8 cursor-pointer font-bold"
@@ -58,24 +79,11 @@
       <div id="sidebarHeader" class="py-2 px-3 mb-4 lg:mb-6">
         <a href="/">
           <h1 class="tracking-normal leading-normal font-bold text-2xl md:text-3xl lg:text-4xl mb-1">Schulen in
-            Schleswig-Holstein <span class="text-sm font-normal text-gray-500"> (Beta)</span></h1>
+            Schleswig-Holstein</h1>
         </a>
       </div>
 
       <div class="my-3 px-3" id="about">
-        <form id="schoolTypes"></form>
-        <form id="geoLocation" enctype="application/x-www-form-urlencoded">
-          <div class="mx-3 mb-8">
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" name="myLocation" value="true" class="sr-only peer">
-              <div
-                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-              </div>
-              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Meinen Standort verwenden</span>
-            </label>
-          </div>
-        </form>
-
         <h3 class="font-bold text-lg md:text-xl mb-1">Wie funktioniert die Schulkarte?</h3>
         <p class="font-normal leading-normal lg:text-md mb-3 md:mb-6">Klicken Sie auf einen Marker, um Details
           zur jeweiligen Schule anzuzeigen. Bewegen Sie die Karte, um weitere Schulen zu entdecken – die Daten werden
@@ -103,15 +111,7 @@
 
       <div id="sidebarContent"
         class="relative bg-white border border-slate-300 leading-normal lg:text-lg m-3 rounded text-black text-md hidden">
-        <style>
-          #detailImage {
-            display: none;
-          }
 
-          #detailImage:has(img.loaded) {
-            display: block;
-          }
-        </style>
         <div id="detailImage"></div>
         <ul class="p-3 space-y-3" id="detailList"></ul>
       </div>
