@@ -222,15 +222,24 @@ async function fetchSchoolPointsByBounds() {
     ymax: bounds.getNorth()
   }
 
-  const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/bounds?xmin=${bbox.xmin}&ymin=${bbox.ymin}&xmax=${bbox.xmax}&ymax=${bbox.ymax}`
-  const data = await fetchJsonData(url)
-  addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
+  // Check if we have a saved school type filter
+  const savedSchoolType = getCookie('selectedSchoolType')
 
-  if (previousSelectedMarker) {
-    const previousMarkerId = previousSelectedMarker.feature.id
-    const newSelectedMarker = findMarkerById(previousMarkerId)
-    if (newSelectedMarker) {
-      setSelectedMarker(newSelectedMarker)
+  if (savedSchoolType && savedSchoolType !== '') {
+    // If we have a saved filter, use it instead of the default bounds query
+    fetchSchoolsByType(savedSchoolType)
+  } else {
+    // Otherwise proceed with the normal bounds query
+    const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/bounds?xmin=${bbox.xmin}&ymin=${bbox.ymin}&xmax=${bbox.xmax}&ymax=${bbox.ymax}`
+    const data = await fetchJsonData(url)
+    addSchoolsToMap(data, addSchoolsByBounds, zoomLevelInitial)
+
+    if (previousSelectedMarker) {
+      const previousMarkerId = previousSelectedMarker.feature.id
+      const newSelectedMarker = findMarkerById(previousMarkerId)
+      if (newSelectedMarker) {
+        setSelectedMarker(newSelectedMarker)
+      }
     }
   }
 }
@@ -335,6 +344,29 @@ async function fetchSchoolsByType(schoolType) {
   }
 }
 
+// Cookie utility functions
+function setCookie(name, value, days = 30) {
+  const date = new Date()
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+  const expires = `; expires=${date.toUTCString()}`
+  document.cookie = `${name}=${value}${expires}; path=/; SameSite=Lax`
+}
+
+function getCookie(name) {
+  const nameEQ = `${name}=`
+  const ca = document.cookie.split(';')
+  for (let i = 0;i < ca.length;i++) {
+    let c = ca[i]
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length)
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+  }
+  return null
+}
+
+function hasCookie(name) {
+  return getCookie(name) !== null
+}
+
 async function createSchoolTypeSelect() {
   const schoolTypes = await fetchSchoolTypes()
   const container = document.querySelector('#schoolTypes')
@@ -370,8 +402,22 @@ async function createSchoolTypeSelect() {
   container.appendChild(label)
   container.appendChild(select)
 
+  // Check if we have a saved school type
+  const savedSchoolType = getCookie('selectedSchoolType')
+  if (savedSchoolType) {
+    // Set the select value to the saved value
+    select.value = savedSchoolType
+    // Also trigger the filter immediately if we have a saved type
+    if (savedSchoolType !== '') {
+      fetchSchoolsByType(savedSchoolType)
+    }
+  }
+
   select.addEventListener('change', (event) => {
     const selectedType = event.target.value
+    // Save selection to cookie
+    setCookie('selectedSchoolType', selectedType)
+
     if (selectedType && selectedType !== '') {
       fetchSchoolsByType(selectedType)
     }
@@ -633,7 +679,16 @@ window.onload = async () => {
 
   if (screen === 'home') {
     map.setView(center, zoomLevelInitial)
-    fetchSchoolPointsByBounds()
+    // We'll create school type select first to let it handle initial filter if needed
+    await createSchoolTypeSelect()
+
+    // Check if there's a saved school type filter
+    const savedSchoolType = getCookie('selectedSchoolType')
+    if (savedSchoolType && savedSchoolType !== '') {
+      fetchSchoolsByType(savedSchoolType)
+    } else {
+      fetchSchoolPointsByBounds()
+    }
   }
   else {
     const data = await fetchSchoolDetailBySlug(screen)
@@ -641,9 +696,8 @@ window.onload = async () => {
       const [lng, lat] = data[0].geojson.coordinates
       map.setView([lat, lng], zoomLevelDetail)
     }
+    await createSchoolTypeSelect()
   }
-
-  await createSchoolTypeSelect()
 
   // Initialize window size handling immediately
   handleWindowSize()
