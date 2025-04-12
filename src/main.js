@@ -228,7 +228,8 @@ async function fetchSchoolPointsByBounds() {
   if (savedSchoolType && savedSchoolType !== '') {
     // If we have a saved filter, use it instead of the default bounds query
     fetchSchoolsByType(savedSchoolType)
-  } else {
+  }
+  else {
     // Otherwise proceed with the normal bounds query
     const url = `${process.env.PARCEL_BASE_API_URL}/school/v1/bounds?xmin=${bbox.xmin}&ymin=${bbox.ymin}&xmax=${bbox.xmax}&ymax=${bbox.ymax}`
     const data = await fetchJsonData(url)
@@ -355,10 +356,14 @@ function setCookie(name, value, days = 30) {
 function getCookie(name) {
   const nameEQ = `${name}=`
   const ca = document.cookie.split(';')
-  for (let i = 0;i < ca.length;i++) {
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i]
-    while (c.charAt(0) === ' ') c = c.substring(1, c.length)
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1, c.length)
+    }
+    if (c.indexOf(nameEQ) === 0) {
+      return c.substring(nameEQ.length, c.length)
+    }
   }
   return null
 }
@@ -686,7 +691,8 @@ window.onload = async () => {
     const savedSchoolType = getCookie('selectedSchoolType')
     if (savedSchoolType && savedSchoolType !== '') {
       fetchSchoolsByType(savedSchoolType)
-    } else {
+    }
+    else {
       fetchSchoolPointsByBounds()
     }
   }
