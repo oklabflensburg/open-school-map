@@ -55,5 +55,9 @@ INSERT INTO sh_school_type (name, code) VALUES
 -- INDEX
 CREATE INDEX IF NOT EXISTS idx_sh_school_type_code ON sh_school_type (code);
 
+
+-- UNIQUE INDEX
+CREATE UNIQUE INDEX IF NOT EXISTS idx_sh_school_agency_number ON sh_school (agency_number);
+
 -- GEOMETRY INDEX
 CREATE INDEX IF NOT EXISTS idx_sh_school_geometry ON sh_school USING GIST (wkb_geometry);
