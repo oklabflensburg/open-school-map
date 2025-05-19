@@ -64,19 +64,19 @@ git clone https://github.com/oklabflensburg/open-school-map.git
 Create a dot `.env` file inside root directory. Make sure to add the following content repaced by your own values
 
 ```
-API_URL=https://api.oklabflensburg.de
-BASE_URL=http://localhost
+PARCEL_BASE_API_URL=https://api.oklabflensburg.de
+PARCEL_BASE_URL=http://localhost
 
-CONTACT_MAIL=mail@example.com
-CONTACT_PHONE="+49xx"
+PARCEL_CONTACT_MAIL=mail@example.com
+PARCEL_CONTACT_PHONE="+49xx"
 
-PRIVACY_CONTACT_PERSON="Firstname Lastname"
+PARCEL_PRIVACY_CONTACT_PERSON="Firstname Lastname"
 
-ADDRESS_NAME="Address Name"
-ADDRESS_STREET="Address Street"
-ADDRESS_HOUSE_NUMBER="House Number"
-ADDRESS_POSTAL_CODE="Postal Code"
-ADDRESS_CITY="City"
+PARCEL_ADDRESS_NAME="Address Name"
+PARCEL_ADDRESS_STREET="Address Street"
+PARCEL_ADDRESS_HOUSE_NUMBER="House Number"
+PARCEL_ADDRESS_POSTAL_CODE="Postal Code"
+PARCEL_ADDRESS_CITY="City"
 
 DB_PASS=postgres
 DB_HOST=localhost
