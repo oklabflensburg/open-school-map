@@ -1,39 +1,40 @@
 {
   "name": "schulkarte-schleswig-holstein",
   "version": "1.0.0",
-  "source": "src/index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "staticFiles": {
-    "staticPath": "static"
-  },
+  "type": "module",
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "htmlhint": "htmlhint \"src/**/*.html\" --ignore \"dist/**/*.html\" --format unix",
-    "lint:js": "pnpm exec eslint \"src/**/*.js\" --no-error-on-unmatched-pattern",
-    "lint:html": "pnpm run htmlhint",
-    "lint:css": "pnpm exec stylelint \"src/**/*.css\"",
-    "lint": "pnpm run lint:js && pnpm run lint:css && pnpm run lint:html"
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "lint:js": "eslint \"{components,composables,layouts,pages,plugins}/**/*.{js,ts,vue}\"",
+    "lint:css": "stylelint \"assets/css/**/*.css\"",
+    "lint": "pnpm run lint:js && pnpm run lint:css"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
-    "parcel": "^2.14.4"
+    "leaflet-control-geocoder": "^2.4.0",
+    "leaflet.markercluster": "^1.5.3",
+    "nuxt": "^3.12.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.23.0",
-    "@parcel/config-default": "^2.14.4",
-    "@parcel/transformer-raw": "^2.14.4",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^9.23.0",
+    "eslint-plugin-vue": "^9.30.0",
     "globals": "^15.15.0",
-    "htmlhint": "^1.1.4",
-    "leaflet-control-geocoder": "^2.4.0",
-    "leaflet.markercluster": "^1.5.3",
-    "parcel-reporter-static-files-copy": "^1.5.3",
     "postcss": "^8.5.3",
     "stylelint": "^16.17.0",
     "stylelint-config-standard": "^36.0.1",
     "svgo": "^3.3.2",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vue-eslint-parser": "^9.4.2"
   }
 }

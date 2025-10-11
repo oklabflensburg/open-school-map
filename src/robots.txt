@@ -1,3 +1,0 @@
-User-Agent: *
-Disallow: /lizenz.html
-Disallow: /impressum.html

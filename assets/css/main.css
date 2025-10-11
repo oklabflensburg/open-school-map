@@ -18,7 +18,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../static/fonts/InterVariable.woff2') format('woff2');
+  src: url('/fonts/InterVariable.woff2') format('woff2');
 }
 
 @font-face {
@@ -26,7 +26,7 @@
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../static/fonts/InterVariable-Italic.woff2') format('woff2');
+  src: url('/fonts/InterVariable-Italic.woff2') format('woff2');
 }
 
 html,
@@ -135,37 +135,12 @@ body {
   margin-top: 5px;
   text-align: center;
   border-radius: 15px;
-  font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font: 12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .marker-cluster span {
   color: #fff;
   line-height: 30px;
-}
-
-/* IE 6-8 fallback colors */
-.leaflet-oldie .marker-cluster-small {
-  background-color: rgb(64 64 65 / 70%);
-}
-
-.leaflet-oldie .marker-cluster-small div {
-  background-color: rgb(64 64 65 / 70%);
-}
-
-.leaflet-oldie .marker-cluster-medium {
-  background-color: rgb(64 64 65 / 70%);
-}
-
-.leaflet-oldie .marker-cluster-medium div {
-  background-color: rgb(64 64 65 / 70%);
-}
-
-.leaflet-oldie .marker-cluster-large {
-  background-color: rgb(64 64 65 / 70%);
-}
-
-.leaflet-oldie .marker-cluster-large div {
-  background-color: rgb(64 64 65 / 70%);
 }
 
 .leaflet-left {
@@ -176,7 +151,6 @@ body {
   bottom: 0;
 }
 
-/* Bottom sheet transition styles */
 #sidebar {
   transition: transform 0.3s ease-in-out;
 }
