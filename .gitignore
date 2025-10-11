@@ -1,6 +1,7 @@
 .parcel-cache/
 node_modules/
 coverage/
+.output/
 .nuxt/
 venv/
 dist/

@@ -66,7 +66,7 @@ pnpm run lint
 
 ## Konfiguration
 
-Erstelle eine `.env` im Projektwurzelverzeichnis (Template `example.env` existiert nicht – bitte selbst anlegen):
+Der Nuxt-Quellcode liegt im Ordner `app/`. Legt eure Umgebungsvariablen in `app/.env` ab (optional zusätzlich im Projektroot für die Python-Tools):
 
 ```bash
 NUXT_PUBLIC_BASE_API_URL=https://api.oklabflensburg.de
@@ -95,12 +95,12 @@ Die Anwendung konsumiert das Schul-API des OK Lab Flensburg (`/school/v1/...`). 
 2. **Daten importieren**:
    ```bash
    cd tools
-   python3 insert_school_csv.py --env ../.env --src ../data/schulen_schleswig_holstein.csv --verbose
+   python3 insert_school_csv.py --env ../app/.env --src ../data/schulen_schleswig_holstein.csv --verbose
    python convert_dataset.py ../data/schulen_flensburg.csv
    python insert_facility.py ../data/schulen_flensburg.geojson
    python update_districts.py
    python merge_districts.py ../data/schulen_flensburg.geojson
-   python generate_sitemap.py ../data/schulen_flensburg.geojson ../public/sitemap.xml https://schulen-in-flensburg.de/
+   python generate_sitemap.py ../data/schulen_flensburg.geojson ../app/public/sitemap.xml https://schulen-in-flensburg.de/
    ```
 
 Die Skripte setzen ein konfiguriertes Python-Environment voraus (`virtualenv`, `requirements.txt` im gleichen Ordner).

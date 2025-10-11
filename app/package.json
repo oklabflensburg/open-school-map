@@ -11,8 +11,8 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "preview": "nuxt preview",
-    "lint:js": "eslint \"{components,composables,layouts,pages,plugins}/**/*.{js,ts,vue}\"",
-    "lint:css": "stylelint \"assets/css/**/*.css\"",
+    "lint:js": "eslint \/{components,composables,layouts,pages,plugins}/**/*.{js,ts,vue}\"",
+    "lint:css": "stylelint \/assets/css/**/*.css\"",
     "lint": "pnpm run lint:js && pnpm run lint:css"
   },
   "dependencies": {
