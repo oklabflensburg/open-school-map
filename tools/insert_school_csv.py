@@ -134,14 +134,33 @@ def insert_row(cur, row: dict):
             telephone, fax, email, website, agency_number,
             main_school_type, school_type, slug, wkb_geometry)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s) RETURNING id
+                %s, %s, %s, %s)
+        ON CONFLICT (agency_number) DO UPDATE
+            SET name = EXCLUDED.name,
+                city = EXCLUDED.city,
+                zipcode = EXCLUDED.zipcode,
+                street = EXCLUDED.street,
+                house_number = EXCLUDED.house_number,
+                telephone = EXCLUDED.telephone,
+                fax = EXCLUDED.fax,
+                email = EXCLUDED.email,
+                website = EXCLUDED.website,
+                main_school_type = EXCLUDED.main_school_type,
+                school_type = EXCLUDED.school_type,
+                slug = EXCLUDED.slug,
+                wkb_geometry = EXCLUDED.wkb_geometry
+        RETURNING id
     '''
     try:
         cur.execute(sql, (name, city, zipcode, street, house_number,
                           telephone, fax, email, website, agency_number,
                           main_school_type, school_type, slug, wkb_geometry))
         last_inserted_id = cur.fetchone()[0]
-        log.info(f"Inserted school '{name}' with ID {last_inserted_id}.")
+        status = cur.statusmessage
+        if status and status.startswith('INSERT'):
+            log.info(f"Inserted school '{name}' with ID {last_inserted_id}.")
+        else:
+            log.info(f"Updated school '{name}' (ID {last_inserted_id}).")
     except Exception as e:
         log.error(f"Failed to insert row: {e}")
 
