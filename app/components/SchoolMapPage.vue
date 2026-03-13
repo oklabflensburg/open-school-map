@@ -316,7 +316,7 @@ function addSchoolsToMap(collection: FeatureCollection, fitToBounds: boolean, ma
 
   markerClusterGroup.addLayer(layer)
   const map = mapInstance.value
-  
+
   // Only fit bounds on initial load
   if (map && fitToBounds && layer.getBounds().isValid() && !hasInitialBounds.value) {
     map.fitBounds(layer.getBounds(), { maxZoom })
@@ -352,7 +352,7 @@ async function fetchSchoolPointsByBounds() {
     xmax: bounds.getEast().toString(),
     ymax: bounds.getNorth().toString()
   })
-  
+
   const collection = await fetchJson<FeatureCollection>(`/school/v1/bounds?${params.toString()}`)
   if (!collection) {
     return
@@ -360,7 +360,7 @@ async function fetchSchoolPointsByBounds() {
 
   // Never fit bounds after initial load
   addSchoolsToMap(collection, false, initialZoom)
-  
+
   // Re-select marker if there was one selected before
   if (selectedSchool.value) {
     const marker = findMarkerById(selectedSchool.value.id)
@@ -394,10 +394,10 @@ async function fetchSchoolsByType(schoolType: string) {
     markerById.clear()
     return
   }
-  
+
   // Never fit bounds after initial load
   addSchoolsToMap(collection, false, initialZoom)
-  
+
   if (selectedSchool.value) {
     const marker = findMarkerById(selectedSchool.value.id)
     if (marker) {
@@ -435,7 +435,7 @@ async function fetchSchoolDetailBySlug(slug: string) {
   const params = new URLSearchParams({ slug })
   const details = await fetchJson<SchoolDetail[]>(`/school/v1/details?${params.toString()}`)
   isLoadingDetails.value = false
-  
+
   if (!details || !details[0]) {
     return
   }
@@ -467,7 +467,7 @@ async function revealSchool(detail: SchoolDetail, options: RevealOptions = {}) {
   if (marker) {
     setSelectedMarker(marker)
   }
-  
+
   isSidebarCollapsed.value = false
 
   if (ensureMarkers) {
@@ -547,7 +547,7 @@ function handleHomeClick(event: Event) {
 function handleCloseClick() {
   // Set flag to prevent route handler from interfering
   isHandlingMapClick.value = true
-  
+
   clearSelection({ preserveView: true, updateRoute: true })
 
   // Reset flag after sufficient delay
@@ -676,7 +676,7 @@ async function initMap() {
   mapInstance.value.addLayer(markerClusterGroup)
 
   leaflet
-    .tileLayer('https://tiles.oklabflensburg.de/sgm/{z}/{x}/{y}.png', {
+    .tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 20,
       tileSize: 256,
       attribution:
