@@ -1,4 +1,4 @@
-id	name	city	zipcode	street	house_number	telephone	fax	email	website	longitude	latitude	agency_number	main_school_type	school_type
+id	name	city	zipcode	street	house_number	telephone	fax	email	website	longitude	latitude	agency_number	main_school_type	school_type	wikidata_p13491
 9099793	Goethe-Gemeinschaftsschule, Gemeinschaftsschule der Landeshauptstadt Kiel in Kiel	Kiel	24118	Westring 358		+49 431 26042850	+49 431 26042869	Goethe-gemeinschaftsschule.kiel@schule.landsh.de	https://www.ggs-kiel.de	10.125675992206988	54.33448298508549	0707060	1024	1024
 9099810	Gemeinschaftsschule am Hamberg, Gemeinschaftsschule des Amtes Burg-St. Michaelisdonn in Burg	Burg (Dithmarschen)	25712	Am Sportplatz	21	+49 4825 2569	+49 4825 9166	Gemeinschaftsschule-am-Hamberg.Burg@schule.landsh.de		9.251399129181406	54.00221251297963	0707200	1024	1024
 9099825	Grundschule Hennstedt des Amtes KLG Eider in Hennstedt	Hennstedt (Dithmarschen)	25779	Schulstraße	29 - 31	+49 4836 516	+49 4836 639	Grundschule.Hennstedt-hei@schule.landsh.de		9.166013773625945	54.284540219044246	0702202	1	1

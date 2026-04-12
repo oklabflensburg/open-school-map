@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS sh_school CASCADE;
 
 CREATE TABLE IF NOT EXISTS sh_school (
   id SERIAL PRIMARY KEY,
+  source_id BIGINT,
   name VARCHAR,
   city VARCHAR,
   zipcode VARCHAR,
@@ -19,6 +20,8 @@ CREATE TABLE IF NOT EXISTS sh_school (
       1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192
   )),
   school_type INTEGER CHECK (school_type >= 0),
+  wikidata_p13491 VARCHAR CHECK (wikidata_p13491 IS NULL OR wikidata_p13491 ~ '^[0-9]{7}$'),
+  wikidata_id VARCHAR CHECK (wikidata_id IS NULL OR wikidata_id ~ '^Q[1-9][0-9]*$'),
   slug VARCHAR,
   wkb_geometry GEOMETRY(Point, 4326)
 );
@@ -58,6 +61,9 @@ CREATE INDEX IF NOT EXISTS idx_sh_school_type_code ON sh_school_type (code);
 
 -- UNIQUE INDEX
 CREATE UNIQUE INDEX IF NOT EXISTS idx_sh_school_agency_number ON sh_school (agency_number);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_sh_school_source_id ON sh_school (source_id) WHERE source_id IS NOT NULL;
 
 -- GEOMETRY INDEX
 CREATE INDEX IF NOT EXISTS idx_sh_school_geometry ON sh_school USING GIST (wkb_geometry);
+CREATE INDEX IF NOT EXISTS idx_sh_school_wikidata_p13491 ON sh_school (wikidata_p13491) WHERE wikidata_p13491 IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_sh_school_wikidata_id ON sh_school (wikidata_id) WHERE wikidata_id IS NOT NULL;

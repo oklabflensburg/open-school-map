@@ -4,6 +4,9 @@ import sys
 import traceback
 import logging as log
 import csv
+import json
+import urllib.parse
+import urllib.request
 
 from datetime import datetime
 from pathlib import Path
@@ -17,6 +20,7 @@ from dotenv import load_dotenv
 
 # ISO 8601 date format
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
+WIKIDATA_SPARQL_URL = 'https://query.wikidata.org/sparql'
 
 
 def log_exceptions(type, value, tb):
@@ -80,6 +84,87 @@ def parse_geometry(lat: float, lon: float) -> bytes:
     return Point(lon, lat).wkb
 
 
+def normalize_wikidata_id(value: str):
+    wikidata_id = parse_value(value)
+    if wikidata_id is None:
+        return None
+
+    wikidata_id = wikidata_id.strip()
+    if re.fullmatch(r'Q[1-9]\d*', wikidata_id, flags=re.IGNORECASE):
+        return wikidata_id.upper()
+
+    match = re.search(r'/(?:wiki|entity)/(Q[1-9]\d*)\b', wikidata_id, flags=re.IGNORECASE)
+    if match:
+        return match.group(1).upper()
+
+    log.warning(f"Invalid Wikidata ID '{value}' - expected 'Q12345' or Wikidata URL.")
+    return None
+
+
+def normalize_wikidata_p13491(value: str):
+    p13491 = parse_value(value)
+    if p13491 is None:
+        return None
+
+    p13491 = p13491.strip()
+    if re.fullmatch(r'\d{7}', p13491):
+        return p13491
+
+    match = re.search(r'(?<!\d)(\d{7})(?!\d)', p13491)
+    if match:
+        return match.group(1)
+
+    return None
+
+
+def chunked(values: list, size: int):
+    for i in range(0, len(values), size):
+        yield values[i:i + size]
+
+
+def fetch_wikidata_qids_by_p13491(values: set[str]) -> dict[str, str]:
+    if not values:
+        return {}
+
+    result = {}
+    values_sorted = sorted(values)
+
+    for chunk in chunked(values_sorted, 250):
+        values_sparql = ' '.join(f'"{value}"' for value in chunk)
+        query = f'''
+            SELECT ?p13491 ?item WHERE {{
+              VALUES ?p13491 {{ {values_sparql} }}
+              ?item wdt:P13491 ?p13491 .
+            }}
+        '''
+        params = urllib.parse.urlencode({
+            'query': query,
+            'format': 'json'
+        })
+        url = f'{WIKIDATA_SPARQL_URL}?{params}'
+        request = urllib.request.Request(url, headers={
+            'Accept': 'application/sparql-results+json',
+            'User-Agent': 'open-school-map/1.0 (https://github.com/oklabflensburg/open-school-map)'
+        })
+
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                payload = json.loads(response.read().decode('utf-8'))
+        except Exception as e:
+            log.warning(f'Failed to fetch Wikidata IDs for a chunk: {e}')
+            continue
+
+        for binding in payload.get('results', {}).get('bindings', []):
+            property_value = binding.get('p13491', {}).get('value')
+            item_url = binding.get('item', {}).get('value')
+            qid = normalize_wikidata_id(item_url)
+            p13491 = normalize_wikidata_p13491(property_value)
+            if p13491 and qid:
+                result[p13491] = qid
+
+    return result
+
+
 def replace_umlauts(string):
     slug = string
 
@@ -105,9 +190,10 @@ def get_slug(values):
     return slug
 
 
-def insert_row(cur, row: dict):
+def insert_row(cur, row: dict, wikidata_by_p13491: dict[str, str]):
     values = []
 
+    source_id = parse_value(row.get('id'), int)
     name = parse_value(row.get('name'))
     city = parse_value(row.get('city'))
     zipcode = parse_value(row.get('zipcode'))
@@ -122,6 +208,11 @@ def insert_row(cur, row: dict):
     agency_number = parse_value(row.get('agency_number'))
     main_school_type = parse_value(row.get('main_school_type'), int)
     school_type = parse_value(row.get('school_type'), int)
+    wikidata_p13491 = normalize_wikidata_p13491(
+        row.get('wikidata_p13491') or row.get('agency_number'))
+    wikidata_id = normalize_wikidata_id(row.get('wikidata_id') or row.get('wikidata'))
+    if wikidata_id is None and wikidata_p13491:
+        wikidata_id = wikidata_by_p13491.get(wikidata_p13491)
     wkb_geometry = parse_geometry(latitude, longitude)
 
     values.append(name)
@@ -130,13 +221,14 @@ def insert_row(cur, row: dict):
     slug = get_slug(values)
 
     sql = '''
-        INSERT INTO sh_school (name, city, zipcode, street, house_number,
+        INSERT INTO sh_school (source_id, name, city, zipcode, street, house_number,
             telephone, fax, email, website, agency_number,
-            main_school_type, school_type, slug, wkb_geometry)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s)
+            main_school_type, school_type, wikidata_p13491, wikidata_id, slug, wkb_geometry)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s, %s)
         ON CONFLICT (agency_number) DO UPDATE
-            SET name = EXCLUDED.name,
+            SET source_id = COALESCE(EXCLUDED.source_id, sh_school.source_id),
+                name = EXCLUDED.name,
                 city = EXCLUDED.city,
                 zipcode = EXCLUDED.zipcode,
                 street = EXCLUDED.street,
@@ -147,14 +239,16 @@ def insert_row(cur, row: dict):
                 website = EXCLUDED.website,
                 main_school_type = EXCLUDED.main_school_type,
                 school_type = EXCLUDED.school_type,
+                wikidata_p13491 = COALESCE(EXCLUDED.wikidata_p13491, sh_school.wikidata_p13491),
+                wikidata_id = COALESCE(EXCLUDED.wikidata_id, sh_school.wikidata_id),
                 slug = EXCLUDED.slug,
                 wkb_geometry = EXCLUDED.wkb_geometry
         RETURNING id
     '''
     try:
-        cur.execute(sql, (name, city, zipcode, street, house_number,
+        cur.execute(sql, (source_id, name, city, zipcode, street, house_number,
                           telephone, fax, email, website, agency_number,
-                          main_school_type, school_type, slug, wkb_geometry))
+                          main_school_type, school_type, wikidata_p13491, wikidata_id, slug, wkb_geometry))
         last_inserted_id = cur.fetchone()[0]
         status = cur.statusmessage
         if status and status.startswith('INSERT'):
@@ -169,9 +263,20 @@ def read_csv(conn, src: Path):
     cur = conn.cursor()
 
     with open(src, newline='') as csvfile:
-        reader = csv.DictReader(csvfile, delimiter='\t')
-        for row in reader:
-            insert_row(cur, row)
+        rows = list(csv.DictReader(csvfile, delimiter='\t'))
+
+    p13491_values = set()
+    for row in rows:
+        p13491 = normalize_wikidata_p13491(row.get('wikidata_p13491') or row.get('agency_number'))
+        if p13491:
+            p13491_values.add(p13491)
+
+    log.info(f"Resolving Wikidata QIDs via P13491 for {len(p13491_values)} schools.")
+    wikidata_by_p13491 = fetch_wikidata_qids_by_p13491(p13491_values)
+    log.info(f"Resolved {len(wikidata_by_p13491)} Wikidata QIDs via P13491.")
+
+    for row in rows:
+        insert_row(cur, row, wikidata_by_p13491)
 
 
 @click.command()

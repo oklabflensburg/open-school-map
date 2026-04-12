@@ -13,6 +13,7 @@ type SchoolType = {
 
 type SchoolDetail = {
   id: number
+  source_id?: number | null
   slug: string
   name: string
   street: string
@@ -23,6 +24,7 @@ type SchoolDetail = {
   fax?: string | null
   email?: string | null
   website?: string | null
+  wikidata_id?: string | null
   geojson: {
     type: 'Point'
     coordinates: [number, number]
@@ -170,6 +172,25 @@ function isValidUrl(urlString: string | null | undefined) {
     return false
   }
 }
+
+function normalizeWikidataId(value: string | null | undefined) {
+  if (!value) {
+    return null
+  }
+
+  const trimmed = value.trim()
+  if (/^Q[1-9]\d*$/i.test(trimmed)) {
+    return trimmed.toUpperCase()
+  }
+
+  const match = trimmed.match(/\/wiki\/(Q[1-9]\d*)/i)
+  return match?.[1]?.toUpperCase() || null
+}
+
+const selectedSchoolWikidataUrl = computed(() => {
+  const entityId = normalizeWikidataId(selectedSchool.value?.wikidata_id)
+  return entityId ? `https://www.wikidata.org/wiki/${entityId}` : null
+})
 
 async function fetchJson<T>(path: string): Promise<T | null> {
   if (!baseApiUrl.value) {
@@ -676,7 +697,7 @@ async function initMap() {
   mapInstance.value.addLayer(markerClusterGroup)
 
   leaflet
-    .tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    .tileLayer('https://tiles.oklabflensburg.de/gosm/{z}/{x}/{y}.png', {
       maxZoom: 20,
       tileSize: 256,
       attribution:
@@ -965,6 +986,12 @@ onBeforeUnmount(() => {
               <strong>Website</strong><br>
               <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" :href="selectedSchool.website" target="_blank" rel="noopener">
                 {{ selectedSchool.website }}
+              </a>
+            </li>
+            <li v-if="selectedSchoolWikidataUrl" class="pt-2">
+              <strong>Wikidata</strong><br>
+              <a class="text-blue-600 hover:text-blue-400 focus:text-blue-400" :href="selectedSchoolWikidataUrl" target="_blank" rel="noopener">
+                {{ selectedSchoolWikidataUrl }}
               </a>
             </li>
             <li v-if="selectedSchool.telephone" class="pt-2">

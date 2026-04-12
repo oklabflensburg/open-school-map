@@ -103,6 +103,8 @@ Die Anwendung konsumiert das Schul-API des OK Lab Flensburg (`/school/v1/...`). 
    python generate_sitemap.py ../data/schulen_flensburg.geojson ../app/public/sitemap.xml https://schulen-in-flensburg.de/
    ```
 
+Das TSV `schulen_schleswig_holstein.csv` unterstützt die Spalte `wikidata_p13491` (7-stellige Schulnummer). Beim Import wird daraus automatisch die `wikidata_id` (Q-ID) über Wikidata-Property [P13491](https://www.wikidata.org/wiki/Property:P13491) aufgelöst und in der Datenbank gespeichert.
+
 Die Skripte setzen ein konfiguriertes Python-Environment voraus (`virtualenv`, `requirements.txt` im gleichen Ordner).
 
 ---
